@@ -15,16 +15,18 @@ public class TestDB {
           System.out.println(f.getLoginFuncionario());
       }
       
-      /* teste findById (Funcionario)
+
       
-      System.out.println(funcDao.findFuncionarioById(1).getSenhaFuncionario());     
+      System.out.println(funcDao.findFuncionarioById(3).getSenhaFuncionario());     
       
-      */
+
       
       /* teste DeleteById (Funcionario)
       
       funcDao.deleteFuncionarioById(2);
       
       */
+      
+        System.out.println(funcDao.findFuncionarioByName("teste1").getLoginFuncionario());
     }
 }

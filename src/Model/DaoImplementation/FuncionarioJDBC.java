@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import Utils.Select.SelectImplements;
 import Utils.Delete.DeleteImplements;
 import Connection.DB;
+import java.util.HashMap;
 
 public class FuncionarioJDBC implements FuncionarioDao{
     
@@ -18,9 +19,14 @@ public class FuncionarioJDBC implements FuncionarioDao{
     
     @Override
     public Funcionario findFuncionarioById(Integer id) { 
+        ResultSet rs = null;
+        SelectImplements lib = new SelectImplements();
+        HashMap<String,Object> params = new HashMap<String, Object>();
         try {
-            SelectImplements lib = new SelectImplements();
-            ResultSet rs = lib.findById("Funcionarios", id);
+            params.put("NOME_ATRIBUTO", "ID_FUNCIONARIO");
+            params.put("VALOR_ATRIBUTO", id);
+            
+            rs = lib.findByFieldName(params, "Funcionarios");
             while(rs.next()) {
                 return createFuncionario(rs);
             }
@@ -46,6 +52,39 @@ public class FuncionarioJDBC implements FuncionarioDao{
         }       
         return funcionarios; 
     }
+       
+    @Override
+    public void deleteFuncionarioById(Integer id) {
+        try {
+            DeleteImplements lib = new DeleteImplements();
+            lib.deleteById(id, "Funcionarios"); 
+        }catch(Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+            System.out.println(e.getStackTrace());
+        }
+    }
+
+    @Override
+    public Funcionario findFuncionarioByName(String nome) {
+        ResultSet rs = null;
+        HashMap<String,Object> params = new HashMap<String, Object>();
+        SelectImplements lib = new SelectImplements();
+        Funcionario funcionario = new Funcionario();
+        try { 
+            params.put("NOME_ATRIBUTO", "NOME_FUNCIONARIO");
+            params.put("VALOR_ATRIBUTO", nome);
+            
+            rs = lib.findByFieldName(params, "Funcionarios");
+            
+            while(rs.next()) {
+                funcionario = createFuncionario(rs);
+            }
+        }catch(Exception e) {
+           JOptionPane.showMessageDialog(null, e.getMessage());
+           System.out.println(e.getStackTrace()); 
+        }
+        return funcionario;
+    }
     
     protected Funcionario createFuncionario(ResultSet rs) {
         Funcionario funcionario = new Funcionario();
@@ -57,16 +96,5 @@ public class FuncionarioJDBC implements FuncionarioDao{
             JOptionPane.showMessageDialog(null, e.getMessage());
         }  
         return funcionario;
-    }   
-
-    @Override
-    public void deleteFuncionarioById(Integer id) {
-        try {
-            DeleteImplements lib = new DeleteImplements();
-            lib.deleteById(id, "Funcionarios"); 
-        }catch(Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-            System.out.println(e.getStackTrace());
-        }
     }
 }
