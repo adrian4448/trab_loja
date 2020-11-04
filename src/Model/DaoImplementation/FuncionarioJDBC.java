@@ -6,11 +6,15 @@ import java.util.ArrayList;
 import java.sql.ResultSet;
 import Model.DaoInterface.FuncionarioDao;
 import Model.Entities.Funcionario;
-import Utils.Select.SelectImplements;
+import java.sql.Connection;
 import java.sql.SQLException;
+import Utils.Select.SelectImplements;
+import Connection.DB;
 
 public class FuncionarioJDBC implements FuncionarioDao{
-
+    
+    private Connection con = DB.getConnection();
+    
     @Override
     public Funcionario findFuncionarioById(Integer id) { 
         try {
@@ -53,4 +57,9 @@ public class FuncionarioJDBC implements FuncionarioDao{
         }  
         return funcionario;
     }   
+
+    @Override
+    public void deleteFuncionarioById(Integer id) {
+        
+    }
 }
