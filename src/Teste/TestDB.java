@@ -1,5 +1,6 @@
-package Connection;
+package Teste;
 
+import Connection.DB;
 import Model.DaoImplementation.FuncionarioJDBC;
 import Model.Entities.Funcionario;
 
@@ -13,7 +14,7 @@ public class TestDB {
           System.out.println(f.getLoginFuncionario());
       }
       
-        System.out.println(funcDao.findFuncionarioById(1).getSenhaFuncionario());
+      System.out.println(funcDao.findFuncionarioById(1).getSenhaFuncionario());
       
       conection.getConnection();
     }
