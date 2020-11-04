@@ -9,6 +9,7 @@ import Model.Entities.Funcionario;
 import java.sql.Connection;
 import java.sql.SQLException;
 import Utils.Select.SelectImplements;
+import Utils.Delete.DeleteImplements;
 import Connection.DB;
 
 public class FuncionarioJDBC implements FuncionarioDao{
@@ -60,6 +61,12 @@ public class FuncionarioJDBC implements FuncionarioDao{
 
     @Override
     public void deleteFuncionarioById(Integer id) {
-        
+        try {
+            DeleteImplements lib = new DeleteImplements();
+            lib.deleteById(id, "Funcionarios"); 
+        }catch(Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+            System.out.println(e.getStackTrace());
+        }
     }
 }

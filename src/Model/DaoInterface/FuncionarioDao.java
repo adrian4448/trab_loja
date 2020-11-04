@@ -6,7 +6,9 @@ import java.util.List;
 public interface FuncionarioDao {
     
     Funcionario findFuncionarioById(Integer id);
-    void deleteFuncionarioById(Integer id);
+    
     List<Funcionario> findAllFuncionarios();    
+    
+    void deleteFuncionarioById(Integer id);
     
 }
