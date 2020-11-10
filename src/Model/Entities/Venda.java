@@ -1,22 +1,25 @@
 package Model.Entities;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 public class Venda {
 
     private Integer idVenda;
-    private Date dataVenda;
+    private LocalDateTime dataVenda;
     private Funcionario funcionario;
-    private Cliente cliente;
-
+    private List<Produto> produtos;
+    
     public Venda() {
 
     }
 
-    public Venda(Date dataVenda, Funcionario funcionario, Cliente cliente) {
+    public Venda(LocalDateTime dataVenda, Funcionario funcionario,List<Produto> produtos) {
         this.dataVenda = dataVenda;
         this.funcionario = funcionario;
-        this.cliente = cliente;
+        this.produtos = produtos;
     }
 
     public Integer getIdVenda() {
@@ -27,11 +30,11 @@ public class Venda {
         this.idVenda = idVenda;
     }
 
-    public Date getDataVenda() {
+    public LocalDateTime getDataVenda() {
         return dataVenda;
     }
 
-    public void setDataVenda(Date dataVenda) {
+    public void setDataVenda(LocalDateTime dataVenda) {
         this.dataVenda = dataVenda;
     }
 
@@ -43,11 +46,11 @@ public class Venda {
         this.funcionario = funcionario;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public List<Produto> getProdutos() {
+        return produtos;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
     }
 }

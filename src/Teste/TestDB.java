@@ -10,23 +10,11 @@ public class TestDB {
     public static void main(String[] args) {
       DB conection = new DB();
       FuncionarioJDBC funcDao = new FuncionarioFactory().CreateDao();
+      Funcionario funcionarioUpdate = new Funcionario("adrian teste", "adrian teste", "adrian teste");
+      funcionarioUpdate.setIdFuncionario(3);
       
-      for(Funcionario f : funcDao.findAllFuncionarios()) {
-          System.out.println(f.getLoginFuncionario());
-      }
       
-
-      
-      System.out.println(funcDao.findFuncionarioById(3).getSenhaFuncionario());     
-      
-
-      
-      /* teste DeleteById (Funcionario)
-      
-      funcDao.deleteFuncionarioById(2);
-      
-      */
-      
-        System.out.println(funcDao.findFuncionarioByName("teste1").getLoginFuncionario());
+      funcDao.addFuncionario(new Funcionario("adrian teste 01", "adrian teste 01", "adrian teste 01"));
+      funcDao.updateFuncionario(funcionarioUpdate);
     }
 }

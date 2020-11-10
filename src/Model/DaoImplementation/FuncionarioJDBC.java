@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import Utils.Select.SelectImplements;
 import Utils.Delete.DeleteImplements;
 import Connection.DB;
+import Utils.DataManipulation.DataManipulationImplements;
 import java.util.HashMap;
 
 public class FuncionarioJDBC implements FuncionarioDao{
@@ -57,7 +58,9 @@ public class FuncionarioJDBC implements FuncionarioDao{
     public void deleteFuncionarioById(Integer id) {
         try {
             DeleteImplements lib = new DeleteImplements();
-            lib.deleteById(id, "Funcionarios"); 
+            HashMap<String,Object> params = new HashMap<>();
+            params.put("ID_FUNCIONARIO", id);
+            lib.deleteByFieldName(params, "Funcionarios"); 
         }catch(Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
             System.out.println(e.getStackTrace());
@@ -86,6 +89,22 @@ public class FuncionarioJDBC implements FuncionarioDao{
         return funcionario;
     }
     
+    @Override
+    public void addFuncionario(Funcionario funcionario) {
+        HashMap<String,Object> params = new HashMap<String, Object>();
+        DataManipulationImplements lib = new DataManipulationImplements();
+        try {
+            params.put("NOME_FUNCIONARIO", funcionario.getNomeFuncionario());
+            params.put("LOGIN_FUNCIONARIO", funcionario.getLoginFuncionario());
+            params.put("SENHA_FUNCIONARIO", funcionario.getSenhaFuncionario());
+            
+            lib.insertInto(params, "Funcionarios");
+        }catch(Exception e) {
+           JOptionPane.showMessageDialog(null, e.getMessage());
+           System.out.println(e.getStackTrace()); 
+        }
+    }
+    
     protected Funcionario createFuncionario(ResultSet rs) {
         Funcionario funcionario = new Funcionario();
         try {
@@ -96,5 +115,21 @@ public class FuncionarioJDBC implements FuncionarioDao{
             JOptionPane.showMessageDialog(null, e.getMessage());
         }  
         return funcionario;
+    }
+
+    @Override
+    public void updateFuncionario(Funcionario funcionario) {
+        HashMap<String,Object> params = new HashMap<String, Object>();
+        DataManipulationImplements lib = new DataManipulationImplements();
+        try {
+            params.put("NOME_FUNCIONARIO", funcionario.getNomeFuncionario());
+            params.put("LOGIN_FUNCIONARIO", funcionario.getLoginFuncionario());
+            params.put("SENHA_FUNCIONARIO", funcionario.getSenhaFuncionario());
+            params.put("ID_FIND", funcionario.getIdFuncionario());
+            lib.updateById(params, "Funcionarios");
+        }catch(Exception e) {
+           JOptionPane.showMessageDialog(null, e.getMessage());
+           System.out.println(e.getStackTrace()); 
+        }
     }
 }

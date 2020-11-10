@@ -4,16 +4,14 @@ public class Fornecedor {
 
     private Integer idFornecedor;
     private String nomeFornecedor;
-    private Produto produto;
     private Integer telefoneFornecedor;
 
     public Fornecedor() {
 
     }
 
-    public Fornecedor(String nomeFornecedor, Produto produto, Integer telefoneFornecedor) {
+    public Fornecedor(String nomeFornecedor, Integer telefoneFornecedor) {
         this.nomeFornecedor = nomeFornecedor;
-        this.produto = produto;
         this.telefoneFornecedor = telefoneFornecedor;
     }
 
@@ -31,14 +29,6 @@ public class Fornecedor {
 
     public void setNomeFornecedor(String nomeFornecedor) {
         this.nomeFornecedor = nomeFornecedor;
-    }
-
-    public Produto getProduto() {
-        return produto;
-    }
-
-    public void setProduto(Produto produto) {
-        this.produto = produto;
     }
 
     public Integer getTelefoneFornecedor() {

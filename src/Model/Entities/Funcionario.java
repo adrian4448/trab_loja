@@ -1,9 +1,13 @@
 package Model.Entities;
 
+import java.time.LocalDate;
+
 public class Funcionario {
 
     private Integer idFuncionario;
     private String nomeFuncionario;
+    private String cpfFuncionario;
+    private LocalDate dataNascimento;
     private String loginFuncionario;
     private String senhaFuncionario;
 
@@ -11,8 +15,10 @@ public class Funcionario {
 
     }
 
-    public Funcionario(String nomeFuncionario, String loginFuncionario, String senhaFuncionario) {
+    public Funcionario(String nomeFuncionario,String cpfFuncionario,LocalDate dataNascimento, String loginFuncionario, String senhaFuncionario) {
         this.nomeFuncionario = nomeFuncionario;
+        this.cpfFuncionario = cpfFuncionario;
+        this.dataNascimento = dataNascimento;
         this.loginFuncionario = loginFuncionario;
         this.senhaFuncionario = senhaFuncionario;
     }

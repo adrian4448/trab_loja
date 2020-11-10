@@ -3,20 +3,31 @@ package Model.Entities;
 public class Produto {
 
     private Integer idProduto;
-    private Venda venda;
-    private Integer quantidade;
-    private Fornecedor fornecedor;
+    private String descProduto;
+    private Double precoProduto;
+
+    private Estoque produtoEstoque;
+    private Categoria categoria;
 
     public Produto() {
 
     }
-
-    public Produto(Venda venda, Integer quantidade, Fornecedor fornecedor) {
-        this.venda = venda;
-        this.quantidade = quantidade;
-        this.fornecedor = fornecedor;
+    
+    public Produto(String descProduto,Double precoProduto, Estoque produtoEstoque) {
+        this.descProduto = descProduto;
+        this.precoProduto = precoProduto;
+        this.produtoEstoque = produtoEstoque;
     }
-
+    
+    public boolean produtoHasEstoque() {
+        if(this.produtoEstoque.getTotalEstoque() > 0) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+    
+    
     public Integer getIdProduto() {
         return idProduto;
     }
@@ -25,27 +36,35 @@ public class Produto {
         this.idProduto = idProduto;
     }
 
-    public Venda getVenda() {
-        return venda;
+    public String getDescProduto() {
+        return descProduto;
     }
 
-    public void setVenda(Venda venda) {
-        this.venda = venda;
+    public void setDescProduto(String descProduto) {
+        this.descProduto = descProduto;
     }
 
-    public Integer getQuantidade() {
-        return quantidade;
+    public Double getPrecoProduto() {
+        return precoProduto;
     }
 
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
+    public void setPrecoProduto(Double precoProduto) {
+        this.precoProduto = precoProduto;
     }
 
-    public Fornecedor getFornecedor() {
-        return fornecedor;
+    public Estoque getProdutoEstoque() {
+        return produtoEstoque;
     }
 
-    public void setFornecedor(Fornecedor fornecedor) {
-        this.fornecedor = fornecedor;
+    public void setProdutoEstoque(Estoque produtoEstoque) {
+        this.produtoEstoque = produtoEstoque;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void cadastrarCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 }
