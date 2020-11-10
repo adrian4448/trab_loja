@@ -1,8 +1,6 @@
 package Model.Entities;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 public class Venda {
@@ -11,12 +9,12 @@ public class Venda {
     private LocalDateTime dataVenda;
     private Funcionario funcionario;
     private List<Produto> produtos;
-    
+
     public Venda() {
 
     }
 
-    public Venda(LocalDateTime dataVenda, Funcionario funcionario,List<Produto> produtos) {
+    public Venda(LocalDateTime dataVenda, Funcionario funcionario, List<Produto> produtos) {
         this.dataVenda = dataVenda;
         this.funcionario = funcionario;
         this.produtos = produtos;

@@ -9,8 +9,7 @@ public class Categoria {
         
     }
     
-    public Categoria(Integer idCategoria, String descCategoria) {
-        this.idCategoria = idCategoria;
+    public Categoria(String descCategoria) {
         this.descCategoria = descCategoria;
     }
     

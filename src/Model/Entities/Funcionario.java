@@ -6,18 +6,17 @@ public class Funcionario {
 
     private Integer idFuncionario;
     private String nomeFuncionario;
-    private String cpfFuncionario;
     private LocalDate dataNascimento;
     private String loginFuncionario;
     private String senhaFuncionario;
+    private String cpfFuncionario;
 
     public Funcionario() {
 
     }
 
-    public Funcionario(String nomeFuncionario,String cpfFuncionario,LocalDate dataNascimento, String loginFuncionario, String senhaFuncionario) {
+    public Funcionario(String nomeFuncionario, LocalDate dataNascimento, String loginFuncionario, String senhaFuncionario) {
         this.nomeFuncionario = nomeFuncionario;
-        this.cpfFuncionario = cpfFuncionario;
         this.dataNascimento = dataNascimento;
         this.loginFuncionario = loginFuncionario;
         this.senhaFuncionario = senhaFuncionario;
@@ -53,5 +52,21 @@ public class Funcionario {
 
     public void setSenhaFuncionario(String senhaFuncionario) {
         this.senhaFuncionario = senhaFuncionario;
+    }
+
+    public String getCpfFuncionario() {
+        return cpfFuncionario;
+    }
+
+    public void setCpfFuncionario(String cpfFuncionario) {
+        this.cpfFuncionario = cpfFuncionario;
+    }
+
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 }

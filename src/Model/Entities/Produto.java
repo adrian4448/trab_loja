@@ -12,22 +12,21 @@ public class Produto {
     public Produto() {
 
     }
-    
-    public Produto(String descProduto,Double precoProduto, Estoque produtoEstoque) {
+
+    public Produto(String descProduto, Double precoProduto, Estoque produtoEstoque) {
         this.descProduto = descProduto;
         this.precoProduto = precoProduto;
         this.produtoEstoque = produtoEstoque;
     }
-    
+
     public boolean produtoHasEstoque() {
-        if(this.produtoEstoque.getTotalEstoque() > 0) {
+        if (this.produtoEstoque != null && this.produtoEstoque.getTotalEstoque() > 0) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }
-    
-    
+
     public Integer getIdProduto() {
         return idProduto;
     }
