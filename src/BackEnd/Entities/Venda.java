@@ -1,4 +1,4 @@
-package Model.Entities;
+package BackEnd.Entities;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -8,13 +8,13 @@ public class Venda {
     private Integer idVenda;
     private LocalDateTime dataVenda;
     private Funcionario funcionario;
-    private List<Produto> produtos;
+    private List<ProdutoVenda> produtos;
 
     public Venda() {
 
     }
 
-    public Venda(LocalDateTime dataVenda, Funcionario funcionario, List<Produto> produtos) {
+    public Venda(LocalDateTime dataVenda, Funcionario funcionario, List<ProdutoVenda> produtos) {
         this.dataVenda = dataVenda;
         this.funcionario = funcionario;
         this.produtos = produtos;
@@ -44,11 +44,11 @@ public class Venda {
         this.funcionario = funcionario;
     }
 
-    public List<Produto> getProdutos() {
+    public List<ProdutoVenda> getProdutos() {
         return produtos;
     }
 
-    public void setProdutos(List<Produto> produtos) {
+    public void setProdutos(List<ProdutoVenda> produtos) {
         this.produtos = produtos;
     }
 }

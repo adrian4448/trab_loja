@@ -1,4 +1,4 @@
-package Model.Entities;
+package BackEnd.Entities;
 
 public class Categoria {
    

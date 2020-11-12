@@ -1,18 +1,17 @@
-package Model.Entities;
+package BackEnd.Entities;
 
-public class Estoque {
+public class ProdutoEstoque {
 
     private Integer idEstoque;
     private Integer totalEstoque;
-    private Fornecedor fornecedor;
+    private Categoria categoria;
 
-    public Estoque() {
+    public ProdutoEstoque() {
 
     }
 
-    public Estoque(Integer totalEstoque, Fornecedor fornecedor) {
+    public ProdutoEstoque(Integer totalEstoque) {
         this.totalEstoque = totalEstoque;
-        this.fornecedor = fornecedor;
     }
 
     public Integer getIdEstoque() {
@@ -22,14 +21,6 @@ public class Estoque {
     public void setIdEstoque(Integer idEstoque) {
         this.idEstoque = idEstoque;
     }
-
-    public Fornecedor getFornecedor() {
-        return fornecedor;
-    }
-
-    public void setFornecedor(Fornecedor fornecedor) {
-        this.fornecedor = fornecedor;
-    }
     
     public Integer getTotalEstoque() {
         return totalEstoque;
@@ -37,5 +28,9 @@ public class Estoque {
 
     public void setTotalEstoque(Integer totalEstoque) {
         this.totalEstoque = totalEstoque;
+    }
+    
+    public void baixaEstoque() {
+        this.totalEstoque -= 1;
     }
 }

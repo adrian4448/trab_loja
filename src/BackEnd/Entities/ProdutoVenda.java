@@ -1,26 +1,26 @@
-package Model.Entities;
+package BackEnd.Entities;
 
-public class Produto {
+public class ProdutoVenda {
 
     private Integer idProduto;
     private String descProduto;
     private Double precoProduto;
 
-    private Estoque produtoEstoque;
-    private Categoria categoria;
-
-    public Produto() {
+    private ProdutoEstoque estoqueProduto;
+    private Fornecedor fornecedor;
+    
+    public ProdutoVenda() {
 
     }
 
-    public Produto(String descProduto, Double precoProduto, Estoque produtoEstoque) {
+    public ProdutoVenda(String descProduto, Double precoProduto, ProdutoEstoque estoqueProduto) {
         this.descProduto = descProduto;
         this.precoProduto = precoProduto;
-        this.produtoEstoque = produtoEstoque;
+        this.estoqueProduto = estoqueProduto;
     }
 
     public boolean produtoHasEstoque() {
-        if (this.produtoEstoque != null && this.produtoEstoque.getTotalEstoque() > 0) {
+        if (this.estoqueProduto != null && this.estoqueProduto.getTotalEstoque() > 0) {
             return true;
         } else {
             return false;
@@ -51,19 +51,11 @@ public class Produto {
         this.precoProduto = precoProduto;
     }
 
-    public Estoque getProdutoEstoque() {
-        return produtoEstoque;
+    public ProdutoEstoque getProdutoEstoque() {
+        return estoqueProduto;
     }
 
-    public void setProdutoEstoque(Estoque produtoEstoque) {
-        this.produtoEstoque = produtoEstoque;
-    }
-
-    public Categoria getCategoria() {
-        return categoria;
-    }
-
-    public void cadastrarCategoria(Categoria categoria) {
-        this.categoria = categoria;
+    public void setProdutoEstoque(ProdutoEstoque produtoEstoque) {
+        this.estoqueProduto = produtoEstoque;
     }
 }

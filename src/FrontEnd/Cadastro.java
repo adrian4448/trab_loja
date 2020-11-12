@@ -1,4 +1,4 @@
-package UserInterface;
+package FrontEnd;
 
 public class Cadastro extends javax.swing.JFrame {
 

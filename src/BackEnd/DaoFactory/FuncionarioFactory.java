@@ -1,6 +1,6 @@
-package Model.DaoFactory;
+package BackEnd.DaoFactory;
 
-import Model.DaoImplementation.FuncionarioJDBC;
+import BackEnd.DaoImplementation.FuncionarioJDBC;
 
 public class FuncionarioFactory {
     
