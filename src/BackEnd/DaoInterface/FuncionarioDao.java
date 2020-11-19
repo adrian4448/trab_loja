@@ -9,6 +9,6 @@ public interface FuncionarioDao {
     void atualizarDadosFuncionario(Funcionario funcionario);
     void inativarFuncionario(Funcionario funcionario);
     Funcionario findFuncionario(HashMap<String, Object> param);
-    boolean funcionarioExist(String login, String senha);
+    boolean funcionarioLogin(String login, String senha);
     
 }
