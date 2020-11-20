@@ -2,11 +2,11 @@ package BackEnd.DaoImplementation;
 
 import BackEnd.DaoInterface.FuncionarioDao;
 import BackEnd.Entities.Funcionario;
+import Utils.DataManipulation.DataManipulationImplements;
 import Utils.Select.SelectImplements;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
@@ -14,16 +14,39 @@ import javax.swing.JOptionPane;
 public class FuncionarioJDBC implements FuncionarioDao {
     
     SelectImplements selectUtils = new SelectImplements();
-    
+    DataManipulationImplements dataManipulationUtils = new DataManipulationImplements();
     
     @Override
     public void cadastrarFuncionario(Funcionario funcionario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("NOME_FUNCIONARIO", funcionario.getNomeFuncionario());
+        params.put("DATA_NASCIMENTO", funcionario.getDataNascimento());
+        params.put("CPF_FUNCIONARIO", funcionario.getCpfFuncionario());
+        params.put("LOGIN_FUNCIONARIO", funcionario.getLoginFuncionario());
+        params.put("SENHA_FUNCIONARIO", funcionario.getSenhaFuncionario());
+        params.put("FUNCIONARIO_ATIVO", 1);
+        try {
+            dataManipulationUtils.insertInto(params, "tbl_funcionario");
+        }catch(Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }
 
     @Override
     public void atualizarDadosFuncionario(Funcionario funcionario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("ID_FIND", funcionario.getIdFuncionario());
+        params.put("NOME_FUNCIONARIO", funcionario.getNomeFuncionario());
+        params.put("DATA_NASCIMENTO", funcionario.getDataNascimento());
+        params.put("CPF_FUNCIONARIO", funcionario.getCpfFuncionario());
+        params.put("LOGIN_FUNCIONARIO", funcionario.getLoginFuncionario());
+        params.put("SENHA_FUNCIONARIO", funcionario.getSenhaFuncionario());
+        params.put("FUNCIONARIO_ATIVO", 1);
+        try {
+            dataManipulationUtils.updateById(params, "tbl_funcionario");
+        }catch(Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }
 
     @Override
