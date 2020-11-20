@@ -2,9 +2,9 @@ package BackEnd.DaoFactory;
 
 import BackEnd.DaoImplementation.FuncionarioJDBC;
 
-public class FuncionarioFactory {
+public class DaoFactory {
     
-    public FuncionarioJDBC CreateDao() {
+    public static FuncionarioJDBC createFuncionarioDao() {
         return new FuncionarioJDBC();
     }           
 }
