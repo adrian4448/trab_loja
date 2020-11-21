@@ -33,8 +33,9 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         btnCadastrar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Tela funcionarios");
+        setResizable(false);
 
         panel.setBackground(new java.awt.Color(204, 204, 204));
         panel.setForeground(new java.awt.Color(51, 255, 255));
@@ -156,6 +157,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cancelarProcesso(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarProcesso

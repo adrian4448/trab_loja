@@ -20,6 +20,8 @@ public class Menu extends javax.swing.JFrame {
         menuEstoque = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         imageIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FrontEnd/fotos/PainelLoja.jpg"))); // NOI18N
@@ -37,6 +39,11 @@ public class Menu extends javax.swing.JFrame {
 
         cadastroFuncionarioOP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FrontEnd/imagens/icons/usuario-icon.png"))); // NOI18N
         cadastroFuncionarioOP.setText("Funcionario");
+        cadastroFuncionarioOP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abrirCadastroFuncionario(evt);
+            }
+        });
         menuCadastro.add(cadastroFuncionarioOP);
 
         cadastroProdutoOP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FrontEnd/imagens/icons/caixa (1).png"))); // NOI18N
@@ -51,7 +58,13 @@ public class Menu extends javax.swing.JFrame {
         setJMenuBar(menuBarPrincipal);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void abrirCadastroFuncionario(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirCadastroFuncionario
+        CadastroFuncionario cadastroFuncionarioForm = new CadastroFuncionario();
+        cadastroFuncionarioForm.setVisible(true);
+    }//GEN-LAST:event_abrirCadastroFuncionario
 
     public static void main(String args[]) {
         try {
