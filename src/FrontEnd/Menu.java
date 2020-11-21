@@ -10,45 +10,45 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        imageIcon = new javax.swing.JLabel();
+        menuBarPrincipal = new javax.swing.JMenuBar();
+        menuCadastro = new javax.swing.JMenu();
+        cadastroCategoriaOP = new javax.swing.JMenuItem();
+        cadastroFornecedorOP = new javax.swing.JMenuItem();
+        cadastroFuncionarioOP = new javax.swing.JMenuItem();
+        cadastroProdutoOP = new javax.swing.JMenuItem();
+        menuEstoque = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FrontEnd/fotos/PainelLoja.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-120, 0, -1, -1));
+        imageIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FrontEnd/fotos/PainelLoja.jpg"))); // NOI18N
+        getContentPane().add(imageIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(-120, 0, -1, -1));
 
-        jMenu1.setText("Cadastro");
+        menuCadastro.setText("Cadastro");
 
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icons/lista.png"))); // NOI18N
-        jMenuItem1.setText("Categoria");
-        jMenu1.add(jMenuItem1);
+        cadastroCategoriaOP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FrontEnd/imagens/icons/lista.png"))); // NOI18N
+        cadastroCategoriaOP.setText("Categoria");
+        menuCadastro.add(cadastroCategoriaOP);
 
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icons/cliente-icon.png"))); // NOI18N
-        jMenuItem2.setText("Fornecedor");
-        jMenu1.add(jMenuItem2);
+        cadastroFornecedorOP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FrontEnd/imagens/icons/cliente-icon.png"))); // NOI18N
+        cadastroFornecedorOP.setText("Fornecedor");
+        menuCadastro.add(cadastroFornecedorOP);
 
-        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icons/usuario-icon.png"))); // NOI18N
-        jMenuItem3.setText("Funcionario");
-        jMenu1.add(jMenuItem3);
+        cadastroFuncionarioOP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FrontEnd/imagens/icons/usuario-icon.png"))); // NOI18N
+        cadastroFuncionarioOP.setText("Funcionario");
+        menuCadastro.add(cadastroFuncionarioOP);
 
-        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icons/caixa (1).png"))); // NOI18N
-        jMenuItem4.setText("Produto");
-        jMenu1.add(jMenuItem4);
+        cadastroProdutoOP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FrontEnd/imagens/icons/caixa (1).png"))); // NOI18N
+        cadastroProdutoOP.setText("Produto");
+        menuCadastro.add(cadastroProdutoOP);
 
-        jMenuBar1.add(jMenu1);
+        menuBarPrincipal.add(menuCadastro);
 
-        jMenu2.setText("Estoque");
-        jMenuBar1.add(jMenu2);
+        menuEstoque.setText("Estoque");
+        menuBarPrincipal.add(menuEstoque);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menuBarPrincipal);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -79,13 +79,13 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem cadastroCategoriaOP;
+    private javax.swing.JMenuItem cadastroFornecedorOP;
+    private javax.swing.JMenuItem cadastroFuncionarioOP;
+    private javax.swing.JMenuItem cadastroProdutoOP;
+    private javax.swing.JLabel imageIcon;
+    private javax.swing.JMenuBar menuBarPrincipal;
+    private javax.swing.JMenu menuCadastro;
+    private javax.swing.JMenu menuEstoque;
     // End of variables declaration//GEN-END:variables
 }
