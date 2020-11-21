@@ -74,7 +74,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
+                cancelarProcesso(evt);
             }
         });
 
@@ -158,9 +158,9 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-
-    }//GEN-LAST:event_btnCancelarActionPerformed
+    private void cancelarProcesso(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarProcesso
+        this.hide();
+    }//GEN-LAST:event_cancelarProcesso
 
     private void cadastrarFuncionario(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarFuncionario
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
