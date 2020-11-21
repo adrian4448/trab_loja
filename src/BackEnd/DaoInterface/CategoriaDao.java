@@ -6,7 +6,6 @@ import java.util.List;
 public interface CategoriaDao {
     
     void cadastrarCategoria(Categoria categoria);
-    void atualizarCategoria(Categoria categoria);
     void excluirCategoria(Categoria categoria);
     List<Categoria> getAllCategorias();
     
