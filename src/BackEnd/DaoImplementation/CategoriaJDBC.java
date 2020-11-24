@@ -60,6 +60,7 @@ public class CategoriaJDBC implements CategoriaDao{
     
     public Categoria constructCategoria(ResultSet rs) throws SQLException{
         Categoria categoria = new Categoria();
+        categoria.setIdCategoria(rs.getInt("ID_CATEGORIA"));
         categoria.setDescCategoria(rs.getString("DESC_CATEGORIA"));
         return categoria;
     }

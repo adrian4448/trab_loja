@@ -3,6 +3,7 @@ package FrontEnd;
 import FrontEnd.Cadastros.CadastroFuncionario;
 import FrontEnd.Cadastros.CadastroFornecedor;
 import FrontEnd.Cadastros.CadastroCategoria;
+import FrontEnd.Visualizar.VisualizarCategorias;
 
 public class Menu extends javax.swing.JFrame {
 
@@ -21,7 +22,9 @@ public class Menu extends javax.swing.JFrame {
         cadastroFornecedorOP = new javax.swing.JMenuItem();
         cadastroFuncionarioOP = new javax.swing.JMenuItem();
         cadastroProdutoOP = new javax.swing.JMenuItem();
-        menuEstoque = new javax.swing.JMenu();
+        menuVisualizar = new javax.swing.JMenu();
+        visualizarCategoriasOP = new javax.swing.JMenuItem();
+        visualizarPerfilOP = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -37,7 +40,7 @@ public class Menu extends javax.swing.JFrame {
         cadastroCategoriaOP.setText("Categoria");
         cadastroCategoriaOP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                abrirCadastroCategoria(evt);
+                cadastrarCategoria(evt);
             }
         });
         menuCadastro.add(cadastroCategoriaOP);
@@ -46,7 +49,7 @@ public class Menu extends javax.swing.JFrame {
         cadastroFornecedorOP.setText("Fornecedor");
         cadastroFornecedorOP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                abrirCadastroFornecedor(evt);
+                cadastrarFornecedor(evt);
             }
         });
         menuCadastro.add(cadastroFornecedorOP);
@@ -55,7 +58,7 @@ public class Menu extends javax.swing.JFrame {
         cadastroFuncionarioOP.setText("Funcionario");
         cadastroFuncionarioOP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                abrirCadastroFuncionario(evt);
+                cadastrarFuncionario(evt);
             }
         });
         menuCadastro.add(cadastroFuncionarioOP);
@@ -66,8 +69,22 @@ public class Menu extends javax.swing.JFrame {
 
         menuBarPrincipal.add(menuCadastro);
 
-        menuEstoque.setText("Estoque");
-        menuBarPrincipal.add(menuEstoque);
+        menuVisualizar.setText("Visualizar ");
+
+        visualizarCategoriasOP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FrontEnd/imagens/icons/lista.png"))); // NOI18N
+        visualizarCategoriasOP.setText("Categorias");
+        visualizarCategoriasOP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                visualizarCategorias(evt);
+            }
+        });
+        menuVisualizar.add(visualizarCategoriasOP);
+
+        visualizarPerfilOP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FrontEnd/imagens/icons/usuario-icon.png"))); // NOI18N
+        visualizarPerfilOP.setText("Perfil");
+        menuVisualizar.add(visualizarPerfilOP);
+
+        menuBarPrincipal.add(menuVisualizar);
 
         setJMenuBar(menuBarPrincipal);
 
@@ -75,20 +92,25 @@ public class Menu extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void abrirCadastroFuncionario(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirCadastroFuncionario
-        CadastroFuncionario cadastroFuncionarioForm = new CadastroFuncionario();
-        cadastroFuncionarioForm.setVisible(true);
-    }//GEN-LAST:event_abrirCadastroFuncionario
-
-    private void abrirCadastroCategoria(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirCadastroCategoria
+    private void cadastrarCategoria(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarCategoria
         CadastroCategoria cadastroCategoriaForm = new CadastroCategoria();
         cadastroCategoriaForm.setVisible(true);
-    }//GEN-LAST:event_abrirCadastroCategoria
+    }//GEN-LAST:event_cadastrarCategoria
 
-    private void abrirCadastroFornecedor(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirCadastroFornecedor
+    private void cadastrarFornecedor(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarFornecedor
         CadastroFornecedor cadastroFornecedorForm = new CadastroFornecedor();
         cadastroFornecedorForm.setVisible(true);
-    }//GEN-LAST:event_abrirCadastroFornecedor
+    }//GEN-LAST:event_cadastrarFornecedor
+
+    private void cadastrarFuncionario(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarFuncionario
+        CadastroFuncionario cadastroFuncionarioForm = new CadastroFuncionario();
+        cadastroFuncionarioForm.setVisible(true);
+    }//GEN-LAST:event_cadastrarFuncionario
+
+    private void visualizarCategorias(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visualizarCategorias
+        VisualizarCategorias visualizarCategoriasForm = new VisualizarCategorias();
+        visualizarCategoriasForm.setVisible(true);
+    }//GEN-LAST:event_visualizarCategorias
 
     public static void main(String args[]) {
         try {
@@ -123,6 +145,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel imageIcon;
     private javax.swing.JMenuBar menuBarPrincipal;
     private javax.swing.JMenu menuCadastro;
-    private javax.swing.JMenu menuEstoque;
+    private javax.swing.JMenu menuVisualizar;
+    private javax.swing.JMenuItem visualizarCategoriasOP;
+    private javax.swing.JMenuItem visualizarPerfilOP;
     // End of variables declaration//GEN-END:variables
 }
