@@ -1,4 +1,4 @@
-package FrontEnd;
+package FrontEnd.Cadastros;
 
 import BackEnd.DaoFactory.DaoFactory;
 import BackEnd.DaoInterface.FuncionarioDao;

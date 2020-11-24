@@ -1,5 +1,9 @@
 package FrontEnd;
 
+import FrontEnd.Cadastros.CadastroFuncionario;
+import FrontEnd.Cadastros.CadastroFornecedor;
+import FrontEnd.Cadastros.CadastroCategoria;
+
 public class Menu extends javax.swing.JFrame {
 
     public Menu() {
@@ -25,16 +29,26 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         imageIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FrontEnd/fotos/PainelLoja.jpg"))); // NOI18N
-        getContentPane().add(imageIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(-120, 0, -1, -1));
+        getContentPane().add(imageIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, -1));
 
         menuCadastro.setText("Cadastro");
 
         cadastroCategoriaOP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FrontEnd/imagens/icons/lista.png"))); // NOI18N
         cadastroCategoriaOP.setText("Categoria");
+        cadastroCategoriaOP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abrirCadastroCategoria(evt);
+            }
+        });
         menuCadastro.add(cadastroCategoriaOP);
 
         cadastroFornecedorOP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FrontEnd/imagens/icons/cliente-icon.png"))); // NOI18N
         cadastroFornecedorOP.setText("Fornecedor");
+        cadastroFornecedorOP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abrirCadastroFornecedor(evt);
+            }
+        });
         menuCadastro.add(cadastroFornecedorOP);
 
         cadastroFuncionarioOP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FrontEnd/imagens/icons/usuario-icon.png"))); // NOI18N
@@ -65,6 +79,16 @@ public class Menu extends javax.swing.JFrame {
         CadastroFuncionario cadastroFuncionarioForm = new CadastroFuncionario();
         cadastroFuncionarioForm.setVisible(true);
     }//GEN-LAST:event_abrirCadastroFuncionario
+
+    private void abrirCadastroCategoria(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirCadastroCategoria
+        CadastroCategoria cadastroCategoriaForm = new CadastroCategoria();
+        cadastroCategoriaForm.setVisible(true);
+    }//GEN-LAST:event_abrirCadastroCategoria
+
+    private void abrirCadastroFornecedor(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirCadastroFornecedor
+        CadastroFornecedor cadastroFornecedorForm = new CadastroFornecedor();
+        cadastroFornecedorForm.setVisible(true);
+    }//GEN-LAST:event_abrirCadastroFornecedor
 
     public static void main(String args[]) {
         try {

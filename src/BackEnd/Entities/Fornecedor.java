@@ -4,13 +4,13 @@ public class Fornecedor {
 
     private Integer idFornecedor;
     private String nomeFornecedor;
-    private Integer telefoneFornecedor;
+    private String telefoneFornecedor;
 
     public Fornecedor() {
 
     }
 
-    public Fornecedor(String nomeFornecedor, Integer telefoneFornecedor) {
+    public Fornecedor(String nomeFornecedor, String telefoneFornecedor) {
         this.nomeFornecedor = nomeFornecedor;
         this.telefoneFornecedor = telefoneFornecedor;
     }
@@ -31,11 +31,11 @@ public class Fornecedor {
         this.nomeFornecedor = nomeFornecedor;
     }
 
-    public Integer getTelefoneFornecedor() {
+    public String getTelefoneFornecedor() {
         return telefoneFornecedor;
     }
 
-    public void setTelefoneFornecedor(Integer telefoneFornecedor) {
+    public void setTelefoneFornecedor(String telefoneFornecedor) {
         this.telefoneFornecedor = telefoneFornecedor;
     }
 }
