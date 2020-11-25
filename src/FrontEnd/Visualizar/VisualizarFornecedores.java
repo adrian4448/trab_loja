@@ -3,6 +3,7 @@ package FrontEnd.Visualizar;
 import BackEnd.DaoFactory.DaoFactory;
 import BackEnd.DaoInterface.FornecedorDao;
 import BackEnd.Entities.Fornecedor;
+import FrontEnd.Visualizar.Alterar.AlterarFornecedor;
 import javax.swing.table.DefaultTableModel;
 
 public class VisualizarFornecedores extends javax.swing.JFrame {
@@ -12,11 +13,14 @@ public class VisualizarFornecedores extends javax.swing.JFrame {
         popularTabela();
     }
 
+    FornecedorDao fornecedorDao = DaoFactory.createFornecedorDao();
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         popUpMenu = new javax.swing.JPopupMenu();
+        alterarFornecedorOP = new javax.swing.JMenuItem();
         excluirFornecedorOP = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane = new javax.swing.JScrollPane();
@@ -24,6 +28,14 @@ public class VisualizarFornecedores extends javax.swing.JFrame {
         lblNomeFornecedor = new javax.swing.JLabel();
         txtNomeFornecedor = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+
+        alterarFornecedorOP.setText("Alterar Fornecedor");
+        alterarFornecedorOP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alterarFornecedor(evt);
+            }
+        });
+        popUpMenu.add(alterarFornecedorOP);
 
         excluirFornecedorOP.setText("Excluir Fornecedor");
         excluirFornecedorOP.setToolTipText("");
@@ -120,8 +132,17 @@ public class VisualizarFornecedores extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_abrirPopUp
 
-    FornecedorDao fornecedorDao = DaoFactory.createFornecedorDao();
-    
+    private void alterarFornecedor(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarFornecedor
+        Fornecedor fornecedor = new Fornecedor();
+        fornecedor.setIdFornecedor((Integer) tblFornecedores.getValueAt(tblFornecedores.getSelectedRow(), 0));
+        fornecedor.setNomeFornecedor((String) tblFornecedores.getValueAt(tblFornecedores.getSelectedRow(), 1));
+        fornecedor.setTelefoneFornecedor((String) tblFornecedores.getValueAt(tblFornecedores.getSelectedRow(), 2));
+        
+        AlterarFornecedor alterarFornecedorForm = new AlterarFornecedor();
+        alterarFornecedorForm.popularCampos(fornecedor);
+        alterarFornecedorForm.setVisible(true);
+    }//GEN-LAST:event_alterarFornecedor
+
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -159,6 +180,7 @@ public class VisualizarFornecedores extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem alterarFornecedorOP;
     private javax.swing.JMenuItem excluirFornecedorOP;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
