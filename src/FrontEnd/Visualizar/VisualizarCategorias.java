@@ -30,7 +30,7 @@ public class VisualizarCategorias extends javax.swing.JFrame {
         excluirCategoriaOP.setText("Excluir Categoria");
         excluirCategoriaOP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                excluirCategoriaOPActionPerformed(evt);
+                excluirCategoria(evt);
             }
         });
         popUpMenu.add(excluirCategoriaOP);
@@ -50,11 +50,12 @@ public class VisualizarCategorias extends javax.swing.JFrame {
         ));
         tblCategorias.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                tblCategoriasMouseReleased(evt);
+                abrirPopUp(evt);
             }
         });
         jScrollPane.setViewportView(tblCategorias);
 
+        lblNomeCategoria.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblNomeCategoria.setText("Nome Categoria");
 
         btnPesquisar.setText("Pesquisar");
@@ -66,12 +67,12 @@ public class VisualizarCategorias extends javax.swing.JFrame {
             .addGroup(panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane)
                     .addGroup(panelLayout.createSequentialGroup()
                         .addComponent(lblNomeCategoria)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNomeCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtNomeCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnPesquisar)))
                 .addContainerGap())
         );
@@ -103,20 +104,20 @@ public class VisualizarCategorias extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tblCategoriasMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCategoriasMouseReleased
+    private void abrirPopUp(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abrirPopUp
         if(evt.isPopupTrigger()) {
             popUpMenu.show(jScrollPane, evt.getX(), evt.getY());
         }  
-    }//GEN-LAST:event_tblCategoriasMouseReleased
+    }//GEN-LAST:event_abrirPopUp
 
-    private void excluirCategoriaOPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirCategoriaOPActionPerformed
+    private void excluirCategoria(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirCategoria
         Categoria categoria = new Categoria();
         Integer idCategoria = (Integer) tblCategorias.getValueAt(0, tblCategorias.getSelectedRow());
         categoria.setIdCategoria(idCategoria);
         
         categoriaDao.excluirCategoria(categoria);
         popularTabela();
-    }//GEN-LAST:event_excluirCategoriaOPActionPerformed
+    }//GEN-LAST:event_excluirCategoria
 
     public static void main(String args[]) {
         try {

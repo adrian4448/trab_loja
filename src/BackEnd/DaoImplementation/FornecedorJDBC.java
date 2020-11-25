@@ -2,15 +2,22 @@ package BackEnd.DaoImplementation;
 
 import BackEnd.DaoInterface.FornecedorDao;
 import BackEnd.Entities.Fornecedor;
+import Connection.DB;
 import Utils.DataManipulation.DataManipulationImplements;
+import Utils.Delete.DeleteImplements;
 import Utils.Select.SelectImplements;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 public class FornecedorJDBC implements FornecedorDao {
     
     SelectImplements selectUtils = new SelectImplements();
     DataManipulationImplements dataManipulationUtils = new DataManipulationImplements();
+    DeleteImplements deleteUtils = new DeleteImplements();
     
     @Override
     public void cadastrarFornecedor(Fornecedor fornecedor) {
@@ -31,7 +38,37 @@ public class FornecedorJDBC implements FornecedorDao {
 
     @Override
     public void excluirFornecedor(Fornecedor fornecedor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        HashMap<String,Object> param = new HashMap<>();
+        param.put("ID_FORNECEDOR", fornecedor.getIdFornecedor());
+        try {
+            deleteUtils.deleteByFieldName(param, "tbl_fornecedor");
+        }catch(Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }
+
+    @Override
+    public List<Fornecedor> getAllFornecedores() {
+        ResultSet rs = null;
+        List<Fornecedor> categoriasList = new ArrayList<>();
+        try {
+           rs = selectUtils.findAll("tbl_fornecedor");      
+           while(rs.next()) {
+               categoriasList.add(constructFornecedor(rs));
+           }
+        }catch(Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }finally {
+            DB.closeResultSet(rs);
+        }
+        return categoriasList;
     }
     
+    public static Fornecedor constructFornecedor(ResultSet rs) throws SQLException {
+        Fornecedor fornecedor = new Fornecedor();
+        fornecedor.setIdFornecedor(rs.getInt("ID_FORNECEDOR"));
+        fornecedor.setNomeFornecedor(rs.getString("NOME_FORNECEDOR"));
+        fornecedor.setTelefoneFornecedor(rs.getString("TELEFONE_FORNECEDOR"));
+        return fornecedor;
+    }
 }

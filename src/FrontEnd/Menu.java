@@ -4,6 +4,7 @@ import FrontEnd.Cadastros.CadastroFuncionario;
 import FrontEnd.Cadastros.CadastroFornecedor;
 import FrontEnd.Cadastros.CadastroCategoria;
 import FrontEnd.Visualizar.VisualizarCategorias;
+import FrontEnd.Visualizar.VisualizarFornecedores;
 
 public class Menu extends javax.swing.JFrame {
 
@@ -24,6 +25,7 @@ public class Menu extends javax.swing.JFrame {
         cadastroProdutoOP = new javax.swing.JMenuItem();
         menuVisualizar = new javax.swing.JMenu();
         visualizarCategoriasOP = new javax.swing.JMenuItem();
+        visualizarFornecedorOP = new javax.swing.JMenuItem();
         visualizarPerfilOP = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -80,6 +82,15 @@ public class Menu extends javax.swing.JFrame {
         });
         menuVisualizar.add(visualizarCategoriasOP);
 
+        visualizarFornecedorOP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FrontEnd/imagens/icons/cliente-icon.png"))); // NOI18N
+        visualizarFornecedorOP.setText("Fornecedor");
+        visualizarFornecedorOP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                visualizarFornecedores(evt);
+            }
+        });
+        menuVisualizar.add(visualizarFornecedorOP);
+
         visualizarPerfilOP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FrontEnd/imagens/icons/usuario-icon.png"))); // NOI18N
         visualizarPerfilOP.setText("Perfil");
         menuVisualizar.add(visualizarPerfilOP);
@@ -111,6 +122,11 @@ public class Menu extends javax.swing.JFrame {
         VisualizarCategorias visualizarCategoriasForm = new VisualizarCategorias();
         visualizarCategoriasForm.setVisible(true);
     }//GEN-LAST:event_visualizarCategorias
+
+    private void visualizarFornecedores(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visualizarFornecedores
+        VisualizarFornecedores visualizarFornecedoresForm = new VisualizarFornecedores();
+        visualizarFornecedoresForm.setVisible(true);
+    }//GEN-LAST:event_visualizarFornecedores
 
     public static void main(String args[]) {
         try {
@@ -147,6 +163,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu menuCadastro;
     private javax.swing.JMenu menuVisualizar;
     private javax.swing.JMenuItem visualizarCategoriasOP;
+    private javax.swing.JMenuItem visualizarFornecedorOP;
     private javax.swing.JMenuItem visualizarPerfilOP;
     // End of variables declaration//GEN-END:variables
 }
