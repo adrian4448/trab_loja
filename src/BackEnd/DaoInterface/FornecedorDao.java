@@ -8,5 +8,6 @@ public interface FornecedorDao {
     void cadastrarFornecedor(Fornecedor fornecedor);
     void atualizarFornecedor(Fornecedor fornecedor);
     void excluirFornecedor(Fornecedor fornecedor);
+    Fornecedor findFornecedorByNome(String name);
     List<Fornecedor> getAllFornecedores();
 }

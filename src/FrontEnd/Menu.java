@@ -3,6 +3,7 @@ package FrontEnd;
 import FrontEnd.Cadastros.CadastroFuncionario;
 import FrontEnd.Cadastros.CadastroFornecedor;
 import FrontEnd.Cadastros.CadastroCategoria;
+import FrontEnd.Cadastros.CadastroProduto;
 import FrontEnd.Visualizar.VisualizarCategorias;
 import FrontEnd.Visualizar.VisualizarFornecedores;
 
@@ -67,6 +68,11 @@ public class Menu extends javax.swing.JFrame {
 
         cadastroProdutoOP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FrontEnd/imagens/icons/caixa (1).png"))); // NOI18N
         cadastroProdutoOP.setText("Produto");
+        cadastroProdutoOP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastrarProduto(evt);
+            }
+        });
         menuCadastro.add(cadastroProdutoOP);
 
         menuBarPrincipal.add(menuCadastro);
@@ -127,6 +133,11 @@ public class Menu extends javax.swing.JFrame {
         VisualizarFornecedores visualizarFornecedoresForm = new VisualizarFornecedores();
         visualizarFornecedoresForm.setVisible(true);
     }//GEN-LAST:event_visualizarFornecedores
+
+    private void cadastrarProduto(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarProduto
+        CadastroProduto cadastroProdutoForm = new CadastroProduto();
+        cadastroProdutoForm.setVisible(true);
+    }//GEN-LAST:event_cadastrarProduto
 
     public static void main(String args[]) {
         try {

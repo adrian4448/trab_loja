@@ -4,7 +4,7 @@ public class ProdutoEstoque {
 
     private Integer idEstoque;
     private Integer totalEstoque;
-    private Categoria categoria;
+    
 
     public ProdutoEstoque() {
 

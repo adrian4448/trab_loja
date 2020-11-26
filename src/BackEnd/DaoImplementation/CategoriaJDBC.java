@@ -1,7 +1,9 @@
 package BackEnd.DaoImplementation;
 
+import static BackEnd.DaoImplementation.FornecedorJDBC.constructFornecedor;
 import BackEnd.DaoInterface.CategoriaDao;
 import BackEnd.Entities.Categoria;
+import BackEnd.Entities.Fornecedor;
 import Connection.DB;
 import Utils.DataManipulation.DataManipulationImplements;
 import Utils.Delete.DeleteImplements;
@@ -56,6 +58,23 @@ public class CategoriaJDBC implements CategoriaDao{
             DB.closeResultSet(rs);
         }
         return categoriasList;
+    }
+    
+    @Override
+    public Categoria findCategoriaByName(String name) {
+        ResultSet rs = null;
+        Categoria categoria = new Categoria();
+        HashMap<String, Object> param = new HashMap<>();
+        param.put("DESC_CATEGORIA", name);
+        try {
+            rs = selectUtils.findByFieldName(param, "tbl_categoria");
+            while(rs.next()) {
+                categoria = constructCategoria(rs);
+            }
+        }catch(Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        return categoria;
     }
     
     public Categoria constructCategoria(ResultSet rs) throws SQLException{

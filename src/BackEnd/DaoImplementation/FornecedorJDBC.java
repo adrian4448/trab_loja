@@ -72,6 +72,23 @@ public class FornecedorJDBC implements FornecedorDao {
         return categoriasList;
     }
     
+    @Override
+    public Fornecedor findFornecedorByNome(String name) {
+        ResultSet rs = null;
+        Fornecedor fornecedor = new Fornecedor();
+        HashMap<String, Object> param = new HashMap<>();
+        param.put("NOME_FORNECEDOR", name);
+        try {
+            rs = selectUtils.findByFieldName(param, "tbl_fornecedor");
+            while(rs.next()) {
+                fornecedor = constructFornecedor(rs);
+            }
+        }catch(Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        return fornecedor;
+    }
+    
     public static Fornecedor constructFornecedor(ResultSet rs) throws SQLException {
         Fornecedor fornecedor = new Fornecedor();
         fornecedor.setIdFornecedor(rs.getInt("ID_FORNECEDOR"));

@@ -6,25 +6,18 @@ public class ProdutoVenda {
     private String descProduto;
     private Double precoProduto;
 
-    private ProdutoEstoque estoqueProduto;
     private Fornecedor fornecedor;
+    private Categoria categoria;
     
     public ProdutoVenda() {
 
     }
 
-    public ProdutoVenda(String descProduto, Double precoProduto, ProdutoEstoque estoqueProduto) {
+    public ProdutoVenda(String descProduto,Fornecedor fornecedor, Double precoProduto, ProdutoEstoque estoqueProduto, Categoria categoria) {
         this.descProduto = descProduto;
         this.precoProduto = precoProduto;
-        this.estoqueProduto = estoqueProduto;
-    }
-
-    public boolean produtoHasEstoque() {
-        if (this.estoqueProduto != null && this.estoqueProduto.getTotalEstoque() > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        this.categoria = categoria;
+        this.fornecedor = fornecedor;
     }
 
     public Integer getIdProduto() {
@@ -50,12 +43,20 @@ public class ProdutoVenda {
     public void setPrecoProduto(Double precoProduto) {
         this.precoProduto = precoProduto;
     }
-
-    public ProdutoEstoque getProdutoEstoque() {
-        return estoqueProduto;
+    
+    public Categoria getCategoria() {
+        return categoria;
     }
 
-    public void setProdutoEstoque(ProdutoEstoque produtoEstoque) {
-        this.estoqueProduto = produtoEstoque;
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+    
+    public Fornecedor getFornecedor() {
+        return fornecedor;
+    }
+
+    public void setFornecedor(Fornecedor fornecedor) {
+        this.fornecedor = fornecedor;
     }
 }

@@ -3,6 +3,7 @@ package BackEnd.DaoFactory;
 import BackEnd.DaoImplementation.CategoriaJDBC;
 import BackEnd.DaoImplementation.FornecedorJDBC;
 import BackEnd.DaoImplementation.FuncionarioJDBC;
+import BackEnd.DaoImplementation.ProdutoVendaJDBC;
 
 public class DaoFactory {
     
@@ -16,5 +17,9 @@ public class DaoFactory {
     
     public static FornecedorJDBC createFornecedorDao() {
         return new FornecedorJDBC();
+    }
+    
+    public static ProdutoVendaJDBC createProdutoVendaDao() {
+        return new ProdutoVendaJDBC();
     }
 }
