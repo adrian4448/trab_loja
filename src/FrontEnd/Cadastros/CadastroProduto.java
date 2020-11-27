@@ -7,17 +7,19 @@ import BackEnd.DaoInterface.ProdutoVendaDao;
 import BackEnd.Entities.Categoria;
 import BackEnd.Entities.Fornecedor;
 import BackEnd.Entities.ProdutoVenda;
+import FrontEnd.Utils.MethodUtils;
 
 public class CadastroProduto extends javax.swing.JFrame {
 
     public CadastroProduto() {
         initComponents();
-        popularComboBox();
+        methodUtils.popularComboBox(cbxCategoria,cbxFornecedor);
     }
     
     CategoriaDao categoriaDao = DaoFactory.createCategoriaDao();
     ProdutoVendaDao produtoDao = DaoFactory.createProdutoVendaDao();
     FornecedorDao fornecedorDao = DaoFactory.createFornecedorDao();
+    MethodUtils methodUtils = new MethodUtils();
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -131,7 +133,7 @@ public class CadastroProduto extends javax.swing.JFrame {
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFornecedor)
                     .addComponent(cbxFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
                     .addComponent(btnCancelar))
@@ -192,16 +194,6 @@ public class CadastroProduto extends javax.swing.JFrame {
                 new CadastroProduto().setVisible(true);
             }
         });
-    }
-    
-    public void popularComboBox() {
-        for(Categoria categoria : categoriaDao.getAllCategorias()) {
-            cbxCategoria.addItem(categoria.getDescCategoria());
-        }
-        
-        for(Fornecedor fornecedor : fornecedorDao.getAllFornecedores()) {
-            cbxFornecedor.addItem(fornecedor.getNomeFornecedor());
-        }
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

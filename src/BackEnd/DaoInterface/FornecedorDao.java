@@ -9,5 +9,6 @@ public interface FornecedorDao {
     void atualizarFornecedor(Fornecedor fornecedor);
     void excluirFornecedor(Fornecedor fornecedor);
     Fornecedor findFornecedorByNome(String name);
+    Fornecedor findFornecedorById(Integer idFornecedor);
     List<Fornecedor> getAllFornecedores();
 }

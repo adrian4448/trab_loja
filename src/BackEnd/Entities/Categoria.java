@@ -4,15 +4,7 @@ public class Categoria {
    
     private Integer idCategoria;
     private String descCategoria;
-    
-    public Categoria() {
-        
-    }
-    
-    public Categoria(String descCategoria) {
-        this.descCategoria = descCategoria;
-    }
-    
+      
     public Integer getIdCategoria() {
         return idCategoria;
     }

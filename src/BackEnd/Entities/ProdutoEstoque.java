@@ -3,12 +3,7 @@ package BackEnd.Entities;
 public class ProdutoEstoque {
 
     private Integer idEstoque;
-    private Integer totalEstoque;
-    
-
-    public ProdutoEstoque() {
-
-    }
+    private Integer totalEstoque; 
 
     public ProdutoEstoque(Integer totalEstoque) {
         this.totalEstoque = totalEstoque;

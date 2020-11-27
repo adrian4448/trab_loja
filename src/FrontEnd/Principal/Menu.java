@@ -1,4 +1,4 @@
-package FrontEnd;
+package FrontEnd.Principal;
 
 import FrontEnd.Cadastros.CadastroFuncionario;
 import FrontEnd.Cadastros.CadastroFornecedor;

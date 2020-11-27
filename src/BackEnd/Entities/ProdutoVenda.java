@@ -5,21 +5,10 @@ public class ProdutoVenda {
     private Integer idProduto;
     private String descProduto;
     private Double precoProduto;
-
+    private StatusProduto statusProduto;    
     private Fornecedor fornecedor;
     private Categoria categoria;
     
-    public ProdutoVenda() {
-
-    }
-
-    public ProdutoVenda(String descProduto,Fornecedor fornecedor, Double precoProduto, ProdutoEstoque estoqueProduto, Categoria categoria) {
-        this.descProduto = descProduto;
-        this.precoProduto = precoProduto;
-        this.categoria = categoria;
-        this.fornecedor = fornecedor;
-    }
-
     public Integer getIdProduto() {
         return idProduto;
     }
@@ -58,5 +47,13 @@ public class ProdutoVenda {
 
     public void setFornecedor(Fornecedor fornecedor) {
         this.fornecedor = fornecedor;
+    }
+    
+    public StatusProduto getStatusProduto() {
+        return statusProduto;
+    }
+
+    public void setStatusProduto(StatusProduto statusProduto) {
+        this.statusProduto = statusProduto;
     }
 }

@@ -112,7 +112,7 @@ public class VisualizarCategorias extends javax.swing.JFrame {
 
     private void excluirCategoria(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirCategoria
         Categoria categoria = new Categoria();
-        Integer idCategoria = (Integer) tblCategorias.getValueAt(0, tblCategorias.getSelectedRow());
+        Integer idCategoria = Integer.parseInt(tblCategorias.getValueAt(tblCategorias.getSelectedRow(), 0).toString());
         categoria.setIdCategoria(idCategoria);
         
         categoriaDao.excluirCategoria(categoria);

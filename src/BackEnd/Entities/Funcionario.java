@@ -11,17 +11,6 @@ public class Funcionario {
     private String senhaFuncionario;
     private String cpfFuncionario;
 
-    public Funcionario() {
-
-    }
-
-    public Funcionario(String nomeFuncionario, LocalDate dataNascimento, String loginFuncionario, String senhaFuncionario) {
-        this.nomeFuncionario = nomeFuncionario;
-        this.dataNascimento = dataNascimento;
-        this.loginFuncionario = loginFuncionario;
-        this.senhaFuncionario = senhaFuncionario;
-    }
-
     public Integer getIdFuncionario() {
         return idFuncionario;
     }

@@ -6,15 +6,6 @@ public class Fornecedor {
     private String nomeFornecedor;
     private String telefoneFornecedor;
 
-    public Fornecedor() {
-
-    }
-
-    public Fornecedor(String nomeFornecedor, String telefoneFornecedor) {
-        this.nomeFornecedor = nomeFornecedor;
-        this.telefoneFornecedor = telefoneFornecedor;
-    }
-
     public Integer getIdFornecedor() {
         return idFornecedor;
     }

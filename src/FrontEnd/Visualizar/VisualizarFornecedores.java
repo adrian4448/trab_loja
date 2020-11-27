@@ -119,7 +119,7 @@ public class VisualizarFornecedores extends javax.swing.JFrame {
 
     private void excluirFornecedor(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirFornecedor
         Fornecedor categoria = new Fornecedor();
-        Integer idFornecedor = (Integer) tblFornecedores.getValueAt(0, tblFornecedores.getSelectedRow());
+        Integer idFornecedor = Integer.parseInt(tblFornecedores.getValueAt(tblFornecedores.getSelectedRow(),0).toString());
         categoria.setIdFornecedor(idFornecedor);
 
         fornecedorDao.excluirFornecedor(categoria);

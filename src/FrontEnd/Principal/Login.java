@@ -1,7 +1,8 @@
-package FrontEnd;
+package FrontEnd.Principal;
 
 import BackEnd.DaoFactory.DaoFactory;
 import BackEnd.DaoInterface.FuncionarioDao;
+import FrontEnd.Principal.Menu;
 import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
