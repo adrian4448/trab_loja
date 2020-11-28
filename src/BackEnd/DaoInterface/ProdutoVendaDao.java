@@ -10,7 +10,6 @@ public interface ProdutoVendaDao {
     void alterarProduto(ProdutoVenda produto);
     void devolverProduto(ProdutoVenda produto);
     void venderProduto(ProdutoVenda produto);
-    ProdutoVenda findProduto(HashMap<String, Object> param);
     List<ProdutoVenda> getAllProducts();
     
 }

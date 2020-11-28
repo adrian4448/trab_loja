@@ -42,17 +42,11 @@ public class ProdutoVendaJDBC implements ProdutoVendaDao {
     }
 
     @Override
-    public ProdutoVenda findProduto(HashMap<String, Object> param) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public List<ProdutoVenda> getAllProducts() {
         ResultSet rs = null;
         List<ProdutoVenda> produtos = new ArrayList<>();
         try {
             rs = selectUtils.findAll("tbl_produtoVenda");
-            
             while(rs.next()) {
                 produtos.add(construirProduto(rs));
             }
@@ -110,7 +104,6 @@ public class ProdutoVendaJDBC implements ProdutoVendaDao {
         produto.setFornecedor(fornecedorDao.findFornecedorById(rs.getInt("ID_FORNECEDOR")));
         produto.setCategoria(categoriaDao.findCategoriaById(rs.getInt("ID_CATEGORIA")));
         produto.setStatusProduto(StatusProduto.values()[rs.getInt("STATUS_PRODUTO") - 1]);     
-        
         return produto;
     }
 }
