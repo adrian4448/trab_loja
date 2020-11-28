@@ -6,7 +6,7 @@ public enum StatusProduto {
     VENDIDO(2),
     DEVOLVIDO(3);
     
-    private Integer statusProduto;
+    private final Integer statusProduto;
 
     private StatusProduto(Integer valor) {
         statusProduto = valor;

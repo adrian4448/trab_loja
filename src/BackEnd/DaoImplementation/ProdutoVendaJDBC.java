@@ -47,16 +47,6 @@ public class ProdutoVendaJDBC implements ProdutoVendaDao {
     }
 
     @Override
-    public void adicionarProdutoEstoque(ProdutoVenda produto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void devolverProduto(ProdutoVenda produto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public List<ProdutoVenda> getAllProducts() {
         ResultSet rs = null;
         List<ProdutoVenda> produtos = new ArrayList<>();
@@ -70,6 +60,46 @@ public class ProdutoVendaJDBC implements ProdutoVendaDao {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
         return produtos;
+    }
+    
+    @Override
+    public void devolverProduto(ProdutoVenda produto) {
+        HashMap<String,Object> params = new HashMap<>();
+        params.put("ID_FIND", produto.getIdProduto());
+        params.put("STATUS_PRODUTO", StatusProduto.DEVOLVIDO.getValorStatusProduto());
+        try {
+            dataManipulationUtils.updateById(params, "tbl_produtoVenda");
+        }catch(Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }
+    
+    @Override
+    public void venderProduto(ProdutoVenda produto) {
+        HashMap<String,Object> params = new HashMap<>();
+        params.put("ID_FIND", produto.getIdProduto());
+        params.put("STATUS_PRODUTO", StatusProduto.VENDIDO.getValorStatusProduto());
+        try {
+            dataManipulationUtils.updateById(params, "tbl_produtoVenda");
+        }catch(Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }
+    
+    @Override
+    public void alterarProduto(ProdutoVenda produto) {
+        HashMap<String,Object> params = new HashMap<>();
+        params.put("ID_FIND", produto.getIdProduto());
+        params.put("DESC_PRODUTO", produto.getDescProduto());
+        params.put("PRECO_PRODUTO", produto.getPrecoProduto());
+        params.put("ID_CATEGORIA", produto.getCategoria().getIdCategoria());
+        params.put("ID_FORNECEDOR", produto.getFornecedor().getIdFornecedor());
+        params.put("STATUS_PRODUTO", produto.getStatusProduto().getValorStatusProduto());
+        try {
+            dataManipulationUtils.updateById(params, "tbl_produtoVenda");
+        }catch(Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }
     
     private ProdutoVenda construirProduto(ResultSet rs) throws SQLException{
