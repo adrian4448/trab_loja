@@ -20,13 +20,14 @@ public class Login extends javax.swing.JFrame {
         panel = new javax.swing.JPanel();
         lblLogin = new javax.swing.JLabel();
         lblSenha = new javax.swing.JLabel();
-        txtSenha = new javax.swing.JTextField();
         btnEntrar = new javax.swing.JButton();
         txtLogin = new javax.swing.JTextField();
         lblTitulo = new javax.swing.JLabel();
+        txtSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
+        setResizable(false);
 
         panel.setBackground(new java.awt.Color(204, 204, 204));
         panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -68,8 +69,8 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(lblSenha))
                         .addGap(18, 18, 18)
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtSenha)
-                            .addComponent(txtLogin))))
+                            .addComponent(txtLogin)
+                            .addComponent(txtSenha))))
                 .addContainerGap())
         );
         panelLayout.setVerticalGroup(
@@ -107,6 +108,7 @@ public class Login extends javax.swing.JFrame {
 
     private void efetuarLogin(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_efetuarLogin
         if(funcionarioDao.funcionarioLogin(txtLogin.getText(), txtSenha.getText())) {
+            JOptionPane.showMessageDialog(null, "Login efetuado com sucesso");
             Menu menu = new Menu();
             menu.setVisible(true);
         }else {
@@ -145,6 +147,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JPanel panel;
     private javax.swing.JTextField txtLogin;
-    private javax.swing.JTextField txtSenha;
+    private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
 }

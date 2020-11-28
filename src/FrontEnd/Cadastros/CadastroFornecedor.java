@@ -3,6 +3,7 @@ package FrontEnd.Cadastros;
 import BackEnd.DaoFactory.DaoFactory;
 import BackEnd.DaoInterface.FornecedorDao;
 import BackEnd.Entities.Fornecedor;
+import javax.swing.JOptionPane;
 
 public class CadastroFornecedor extends javax.swing.JFrame {
 
@@ -130,8 +131,8 @@ public class CadastroFornecedor extends javax.swing.JFrame {
         Fornecedor fornecedor = new Fornecedor();
         fornecedor.setNomeFornecedor(txtNomeFornecedor.getText());
         fornecedor.setTelefoneFornecedor(txtTelefone.getText());
-        
         fornecedorDao.cadastrarFornecedor(fornecedor);
+        JOptionPane.showMessageDialog(null, "Fornecedor cadastado com sucesso !");
     }//GEN-LAST:event_cadastrarFornecedor
 
     public static void main(String args[]) {

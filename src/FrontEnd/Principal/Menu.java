@@ -6,6 +6,7 @@ import FrontEnd.Cadastros.CadastroCategoria;
 import FrontEnd.Cadastros.CadastroProduto;
 import FrontEnd.Visualizar.VisualizarCategorias;
 import FrontEnd.Visualizar.VisualizarFornecedores;
+import FrontEnd.Visualizar.VisualizarProdutos;
 
 public class Menu extends javax.swing.JFrame {
 
@@ -27,6 +28,7 @@ public class Menu extends javax.swing.JFrame {
         menuVisualizar = new javax.swing.JMenu();
         visualizarCategoriasOP = new javax.swing.JMenuItem();
         visualizarFornecedorOP = new javax.swing.JMenuItem();
+        visualizarProdutoOP = new javax.swing.JMenuItem();
         visualizarPerfilOP = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -97,6 +99,15 @@ public class Menu extends javax.swing.JFrame {
         });
         menuVisualizar.add(visualizarFornecedorOP);
 
+        visualizarProdutoOP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FrontEnd/imagens/icons/caixa (1).png"))); // NOI18N
+        visualizarProdutoOP.setText("Produto");
+        visualizarProdutoOP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                visualizarProdutos(evt);
+            }
+        });
+        menuVisualizar.add(visualizarProdutoOP);
+
         visualizarPerfilOP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FrontEnd/imagens/icons/usuario-icon.png"))); // NOI18N
         visualizarPerfilOP.setText("Perfil");
         menuVisualizar.add(visualizarPerfilOP);
@@ -139,6 +150,11 @@ public class Menu extends javax.swing.JFrame {
         cadastroProdutoForm.setVisible(true);
     }//GEN-LAST:event_cadastrarProduto
 
+    private void visualizarProdutos(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visualizarProdutos
+        VisualizarProdutos visualizarProdutosForm = new VisualizarProdutos();
+        visualizarProdutosForm.setVisible(true);
+    }//GEN-LAST:event_visualizarProdutos
+
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -176,5 +192,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem visualizarCategoriasOP;
     private javax.swing.JMenuItem visualizarFornecedorOP;
     private javax.swing.JMenuItem visualizarPerfilOP;
+    private javax.swing.JMenuItem visualizarProdutoOP;
     // End of variables declaration//GEN-END:variables
 }

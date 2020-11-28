@@ -3,6 +3,7 @@ package FrontEnd.Cadastros;
 import BackEnd.DaoFactory.DaoFactory;
 import BackEnd.DaoInterface.CategoriaDao;
 import BackEnd.Entities.Categoria;
+import javax.swing.JOptionPane;
 
 public class CadastroCategoria extends javax.swing.JFrame {
 
@@ -107,6 +108,7 @@ public class CadastroCategoria extends javax.swing.JFrame {
         Categoria categoria = new Categoria();
         categoria.setDescCategoria(txtNomeCategoria.getText());
         categoriaDao.cadastrarCategoria(categoria);
+        JOptionPane.showMessageDialog(null, "Categoria cadastada com sucesso !");
     }//GEN-LAST:event_cadastrarCategoria
 
     private void cancelarProcesso(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarProcesso

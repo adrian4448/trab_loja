@@ -8,6 +8,7 @@ import BackEnd.Entities.Categoria;
 import BackEnd.Entities.Fornecedor;
 import BackEnd.Entities.ProdutoVenda;
 import FrontEnd.Utils.MethodUtils;
+import javax.swing.JOptionPane;
 
 public class CadastroProduto extends javax.swing.JFrame {
 
@@ -169,6 +170,7 @@ public class CadastroProduto extends javax.swing.JFrame {
         produto.setFornecedor(fornecedor);
         
         produtoDao.cadastrarProduto(produto);
+        JOptionPane.showMessageDialog(null, "Produto cadastado com sucesso !");
     }//GEN-LAST:event_cadastrarProduto
 
     public static void main(String args[]) {

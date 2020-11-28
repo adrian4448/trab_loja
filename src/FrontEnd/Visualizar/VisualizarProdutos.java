@@ -6,6 +6,7 @@ import BackEnd.DaoInterface.FornecedorDao;
 import BackEnd.DaoInterface.ProdutoVendaDao;
 import BackEnd.Entities.ProdutoVenda;
 import FrontEnd.Utils.MethodUtils;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class VisualizarProdutos extends javax.swing.JFrame {
@@ -16,10 +17,10 @@ public class VisualizarProdutos extends javax.swing.JFrame {
         methodUtils.popularComboBox(cbxCategoriaProduto, cbxFornecedor);
     }
         
-        CategoriaDao categoriaDao = DaoFactory.createCategoriaDao();
-        ProdutoVendaDao produtoDao = DaoFactory.createProdutoVendaDao();
-        FornecedorDao fornecedorDao = DaoFactory.createFornecedorDao();
-        MethodUtils methodUtils = new MethodUtils();
+    CategoriaDao categoriaDao = DaoFactory.createCategoriaDao();
+    ProdutoVendaDao produtoDao = DaoFactory.createProdutoVendaDao();
+    FornecedorDao fornecedorDao = DaoFactory.createFornecedorDao();
+    MethodUtils methodUtils = new MethodUtils();
         
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -48,9 +49,19 @@ public class VisualizarProdutos extends javax.swing.JFrame {
         popUpMenu.add(alterarProdutoOP);
 
         devolverProdutoOP.setText("Marcar como Devolvido");
+        devolverProdutoOP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                devolverProduto(evt);
+            }
+        });
         popUpMenu.add(devolverProdutoOP);
 
         venderProdutoOP.setText("Marcar como Vendido");
+        venderProdutoOP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                venderProduto(evt);
+            }
+        });
         popUpMenu.add(venderProdutoOP);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -159,6 +170,22 @@ public class VisualizarProdutos extends javax.swing.JFrame {
             popUpMenu.show(scrollPane, evt.getX(), evt.getY());
         }
     }//GEN-LAST:event_popUp
+
+    private void venderProduto(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_venderProduto
+       ProdutoVenda produto = new ProdutoVenda();
+       produto.setIdProduto(Integer.parseInt(tblProduto.getValueAt(tblProduto.getSelectedRow(), 0).toString()));
+       produtoDao.venderProduto(produto);
+       JOptionPane.showMessageDialog(null, "Produto marcado como Vendido");
+       popularTabela();
+    }//GEN-LAST:event_venderProduto
+
+    private void devolverProduto(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolverProduto
+       ProdutoVenda produto = new ProdutoVenda();
+       produto.setIdProduto(Integer.parseInt(tblProduto.getValueAt(tblProduto.getSelectedRow(), 0).toString()));
+       produtoDao.devolverProduto(produto);
+       JOptionPane.showMessageDialog(null, "Produto marcado como Devolvido");
+       popularTabela();
+    }//GEN-LAST:event_devolverProduto
 
 
     public static void main(String args[]) {
