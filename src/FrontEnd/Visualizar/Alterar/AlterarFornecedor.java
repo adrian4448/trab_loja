@@ -3,6 +3,7 @@ package FrontEnd.Visualizar.Alterar;
 import BackEnd.DaoFactory.DaoFactory;
 import BackEnd.DaoInterface.FornecedorDao;
 import BackEnd.Entities.Fornecedor;
+import FrontEnd.Visualizar.VisualizarFornecedores;
 
 public class AlterarFornecedor extends javax.swing.JFrame {
 
@@ -11,7 +12,10 @@ public class AlterarFornecedor extends javax.swing.JFrame {
     }
     
     FornecedorDao fornecedorDao = DaoFactory.createFornecedorDao();
-        
+    
+    //Atualizar tabela
+    VisualizarFornecedores visualizarFornecedoresForm = new VisualizarFornecedores();
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -127,6 +131,7 @@ public class AlterarFornecedor extends javax.swing.JFrame {
         fornecedor.setTelefoneFornecedor(txtTelefoneFornecedor.getText());
         
         fornecedorDao.atualizarFornecedor(fornecedor);
+        visualizarFornecedoresForm.popularTabela();
     }//GEN-LAST:event_realizarAlteracao
     
     public void popularCampos(Fornecedor fornecedor) {

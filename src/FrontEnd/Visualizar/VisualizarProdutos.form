@@ -17,6 +17,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Alterar Produto"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="alterarProduto"/>
+          </Events>
         </MenuItem>
         <MenuItem class="javax.swing.JMenuItem" name="devolverProdutoOP">
           <Properties>

@@ -88,7 +88,6 @@ public class ProdutoVendaJDBC implements ProdutoVendaDao {
         params.put("PRECO_PRODUTO", produto.getPrecoProduto());
         params.put("ID_CATEGORIA", produto.getCategoria().getIdCategoria());
         params.put("ID_FORNECEDOR", produto.getFornecedor().getIdFornecedor());
-        params.put("STATUS_PRODUTO", produto.getStatusProduto().getValorStatusProduto());
         try {
             dataManipulationUtils.updateById(params, "tbl_produtoVenda");
         }catch(Exception e) {

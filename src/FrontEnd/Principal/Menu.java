@@ -29,7 +29,6 @@ public class Menu extends javax.swing.JFrame {
         visualizarCategoriasOP = new javax.swing.JMenuItem();
         visualizarFornecedorOP = new javax.swing.JMenuItem();
         visualizarProdutoOP = new javax.swing.JMenuItem();
-        visualizarPerfilOP = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -107,10 +106,6 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         menuVisualizar.add(visualizarProdutoOP);
-
-        visualizarPerfilOP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FrontEnd/imagens/icons/usuario-icon.png"))); // NOI18N
-        visualizarPerfilOP.setText("Perfil");
-        menuVisualizar.add(visualizarPerfilOP);
 
         menuBarPrincipal.add(menuVisualizar);
 
@@ -191,7 +186,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu menuVisualizar;
     private javax.swing.JMenuItem visualizarCategoriasOP;
     private javax.swing.JMenuItem visualizarFornecedorOP;
-    private javax.swing.JMenuItem visualizarPerfilOP;
     private javax.swing.JMenuItem visualizarProdutoOP;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,7 +5,9 @@ import BackEnd.DaoInterface.CategoriaDao;
 import BackEnd.DaoInterface.FornecedorDao;
 import BackEnd.DaoInterface.ProdutoVendaDao;
 import BackEnd.Entities.ProdutoVenda;
+import BackEnd.Entities.StatusProduto;
 import FrontEnd.Utils.MethodUtils;
+import FrontEnd.Visualizar.Alterar.AlterarProduto;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -46,6 +48,11 @@ public class VisualizarProdutos extends javax.swing.JFrame {
         popUpMenu.add(excluirProduto);
 
         alterarProdutoOP.setText("Alterar Produto");
+        alterarProdutoOP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alterarProduto(evt);
+            }
+        });
         popUpMenu.add(alterarProdutoOP);
 
         devolverProdutoOP.setText("Marcar como Devolvido");
@@ -187,6 +194,17 @@ public class VisualizarProdutos extends javax.swing.JFrame {
        popularTabela();
     }//GEN-LAST:event_devolverProduto
 
+    private void alterarProduto(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarProduto
+        ProdutoVenda produto = new ProdutoVenda();
+        produto.setIdProduto(Integer.parseInt(tblProduto.getValueAt(tblProduto.getSelectedRow(), 0).toString()));
+        produto.setDescProduto(tblProduto.getValueAt(tblProduto.getSelectedRow(), 1).toString());
+        produto.setPrecoProduto(Double.parseDouble(tblProduto.getValueAt(tblProduto.getSelectedRow(), 2).toString()));
+        AlterarProduto alterarProdutoForm = new AlterarProduto();
+        alterarProdutoForm.popularCampos(produto);
+        alterarProdutoForm.setVisualizarProdutos(this);
+        alterarProdutoForm.setVisible(true);
+    }//GEN-LAST:event_alterarProduto
+
 
     public static void main(String args[]) {
         try {
@@ -212,7 +230,7 @@ public class VisualizarProdutos extends javax.swing.JFrame {
         });
     }
     
-    private void popularTabela() {
+    public void popularTabela() {
         DefaultTableModel table = (DefaultTableModel) tblProduto.getModel();
         table.setRowCount(0);
         
@@ -227,8 +245,6 @@ public class VisualizarProdutos extends javax.swing.JFrame {
             });
         }
     }
-    
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem alterarProdutoOP;
     private javax.swing.JButton btnPesquisar;
