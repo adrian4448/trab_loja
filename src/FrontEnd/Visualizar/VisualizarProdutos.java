@@ -29,10 +29,10 @@ public class VisualizarProdutos extends javax.swing.JFrame {
     private void initComponents() {
 
         popUpMenu = new javax.swing.JPopupMenu();
-        excluirProduto = new javax.swing.JMenuItem();
         alterarProdutoOP = new javax.swing.JMenuItem();
         devolverProdutoOP = new javax.swing.JMenuItem();
         venderProdutoOP = new javax.swing.JMenuItem();
+        inativarProduto = new javax.swing.JMenuItem();
         panel = new javax.swing.JPanel();
         scrollPane = new javax.swing.JScrollPane();
         tblProduto = new javax.swing.JTable();
@@ -43,9 +43,6 @@ public class VisualizarProdutos extends javax.swing.JFrame {
         cbxCategoriaProduto = new javax.swing.JComboBox<>();
         cbxFornecedor = new javax.swing.JComboBox<>();
         btnPesquisar = new javax.swing.JButton();
-
-        excluirProduto.setText("Excluir Produto");
-        popUpMenu.add(excluirProduto);
 
         alterarProdutoOP.setText("Alterar Produto");
         alterarProdutoOP.addActionListener(new java.awt.event.ActionListener() {
@@ -70,6 +67,14 @@ public class VisualizarProdutos extends javax.swing.JFrame {
             }
         });
         popUpMenu.add(venderProdutoOP);
+
+        inativarProduto.setText("Inativar Produto");
+        inativarProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inativarProduto(evt);
+            }
+        });
+        popUpMenu.add(inativarProduto);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -205,6 +210,14 @@ public class VisualizarProdutos extends javax.swing.JFrame {
         alterarProdutoForm.setVisible(true);
     }//GEN-LAST:event_alterarProduto
 
+    private void inativarProduto(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inativarProduto
+       ProdutoVenda produto = new ProdutoVenda();
+       produto.setIdProduto(Integer.parseInt(tblProduto.getValueAt(tblProduto.getSelectedRow(), 0).toString()));
+       produtoDao.inativarProduto(produto);
+       JOptionPane.showMessageDialog(null, "Produto marcado como Inativo");
+       popularTabela();
+    }//GEN-LAST:event_inativarProduto
+
 
     public static void main(String args[]) {
         try {
@@ -251,7 +264,7 @@ public class VisualizarProdutos extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbxCategoriaProduto;
     private javax.swing.JComboBox<String> cbxFornecedor;
     private javax.swing.JMenuItem devolverProdutoOP;
-    private javax.swing.JMenuItem excluirProduto;
+    private javax.swing.JMenuItem inativarProduto;
     private javax.swing.JLabel lblCategoriaProduto;
     private javax.swing.JLabel lblFornecedor;
     private javax.swing.JLabel lblNomeProduto;

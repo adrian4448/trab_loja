@@ -4,7 +4,8 @@ public enum StatusProduto {
     
     ATIVO(1),
     VENDIDO(2),
-    DEVOLVIDO(3);
+    DEVOLVIDO(3),
+    INATIVO(4);
     
     private final Integer statusProduto;
 

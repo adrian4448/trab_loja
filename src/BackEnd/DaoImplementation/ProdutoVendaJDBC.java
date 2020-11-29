@@ -95,6 +95,18 @@ public class ProdutoVendaJDBC implements ProdutoVendaDao {
         }
     }
     
+    @Override
+    public void inativarProduto(ProdutoVenda produto) {
+         HashMap<String,Object> params = new HashMap<>();
+        params.put("ID_FIND", produto.getIdProduto());
+        params.put("STATUS_PRODUTO", StatusProduto.INATIVO.getValorStatusProduto());
+        try {
+            dataManipulationUtils.updateById(params, "tbl_produtoVenda");
+        }catch(Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }
+    
     private ProdutoVenda construirProduto(ResultSet rs) throws SQLException{
         ProdutoVenda produto = new ProdutoVenda();
         produto.setIdProduto(rs.getInt("ID_PRODUTO"));

@@ -8,11 +8,6 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <MenuItem class="javax.swing.JMenuItem" name="excluirProduto">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Excluir Produto"/>
-          </Properties>
-        </MenuItem>
         <MenuItem class="javax.swing.JMenuItem" name="alterarProdutoOP">
           <Properties>
             <Property name="text" type="java.lang.String" value="Alterar Produto"/>
@@ -35,6 +30,14 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="venderProduto"/>
+          </Events>
+        </MenuItem>
+        <MenuItem class="javax.swing.JMenuItem" name="inativarProduto">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Inativar Produto"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inativarProduto"/>
           </Events>
         </MenuItem>
       </SubComponents>

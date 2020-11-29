@@ -8,6 +8,7 @@ import BackEnd.Entities.ProdutoVenda;
 import BackEnd.Entities.StatusProduto;
 import FrontEnd.Utils.MethodUtils;
 import FrontEnd.Visualizar.VisualizarProdutos;
+import javax.swing.JOptionPane;
 
 public class AlterarProduto extends javax.swing.JFrame {
 
@@ -161,6 +162,7 @@ public class AlterarProduto extends javax.swing.JFrame {
         produto.setFornecedor(fornecedorDao.findFornecedorByNome(cbxFornecedor.getSelectedItem().toString()));
         produtoDao.alterarProduto(produto);
         this.dispose();
+        JOptionPane.showMessageDialog(null, "Produto alterado com sucesso !");
         visualizarProdutosForm.popularTabela();
     }//GEN-LAST:event_alterarProduto
 
