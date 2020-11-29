@@ -98,4 +98,17 @@ public class CategoriaJDBC implements CategoriaDao{
         }
         return categoria;
     }
+
+    @Override
+    public List<Categoria> getCategoriasByFilter(HashMap<String, Object> params) {
+        List<Categoria> categorias = new ArrayList<>();
+        ResultSet rs = null;
+        try {
+            
+        }catch(Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        
+        return categorias;
+    }
 }
