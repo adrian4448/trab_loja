@@ -11,4 +11,5 @@ public interface FornecedorDao {
     Fornecedor findFornecedorByNome(String name);
     Fornecedor findFornecedorById(Integer idFornecedor);
     List<Fornecedor> getAllFornecedores();
+    List<Fornecedor> getFornecedorByFilter(String nomeFornecedor);
 }

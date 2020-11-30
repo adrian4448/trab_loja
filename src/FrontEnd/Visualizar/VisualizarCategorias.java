@@ -3,13 +3,14 @@ package FrontEnd.Visualizar;
 import BackEnd.DaoFactory.DaoFactory;
 import BackEnd.DaoInterface.CategoriaDao;
 import BackEnd.Entities.Categoria;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 public class VisualizarCategorias extends javax.swing.JFrame {
 
     public VisualizarCategorias() {
         initComponents();
-        popularTabela();
+        popularTabela(categoriaDao.getAllCategorias());
     }
     
     CategoriaDao categoriaDao = DaoFactory.createCategoriaDao();
@@ -59,6 +60,11 @@ public class VisualizarCategorias extends javax.swing.JFrame {
         lblNomeCategoria.setText("Nome Categoria");
 
         btnPesquisar.setText("Pesquisar");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pesquisar(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
@@ -116,8 +122,13 @@ public class VisualizarCategorias extends javax.swing.JFrame {
         categoria.setIdCategoria(idCategoria);
         
         categoriaDao.excluirCategoria(categoria);
-        popularTabela();
+        popularTabela(categoriaDao.getAllCategorias());
     }//GEN-LAST:event_excluirCategoria
+
+    private void pesquisar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisar
+        String descCategoria = txtNomeCategoria.getText();
+        popularTabela(categoriaDao.getCategoriasByFilter(descCategoria));
+    }//GEN-LAST:event_pesquisar
 
     public static void main(String args[]) {
         try {
@@ -143,10 +154,10 @@ public class VisualizarCategorias extends javax.swing.JFrame {
         });
     }
     
-    public void popularTabela() {
+    public void popularTabela(List<Categoria> categorias) {
        DefaultTableModel table = (DefaultTableModel) tblCategorias.getModel();
        table.setNumRows(0);
-       for(Categoria categoria : categoriaDao.getAllCategorias()) {
+       for(Categoria categoria : categorias) {
            table.addRow(new Object[] {
                categoria.getIdCategoria(),
                categoria.getDescCategoria()

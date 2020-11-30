@@ -75,13 +75,6 @@ public class CategoriaJDBC implements CategoriaDao{
         return categoria;
     }
     
-    public Categoria constructCategoria(ResultSet rs) throws SQLException{
-        Categoria categoria = new Categoria();
-        categoria.setIdCategoria(rs.getInt("ID_CATEGORIA"));
-        categoria.setDescCategoria(rs.getString("DESC_CATEGORIA"));
-        return categoria;
-    }
-
     @Override
     public Categoria findCategoriaById(Integer idCategoria) {
         ResultSet rs = null;
@@ -100,15 +93,26 @@ public class CategoriaJDBC implements CategoriaDao{
     }
 
     @Override
-    public List<Categoria> getCategoriasByFilter(HashMap<String, Object> params) {
+    public List<Categoria> getCategoriasByFilter(String descCategoria) {
         List<Categoria> categorias = new ArrayList<>();
+        StringBuilder sqlWhere = new StringBuilder();
+        sqlWhere.append(" DESC_CATEGORIA LIKE '%").append(descCategoria).append("%'");
         ResultSet rs = null;
         try {
-            
+            rs = selectUtils.selectWithWhere(sqlWhere, "tbl_categoria");
+            while(rs.next()) {
+                categorias.add(constructCategoria(rs));
+            }    
         }catch(Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
-        
         return categorias;
+    }
+    
+    public Categoria constructCategoria(ResultSet rs) throws SQLException{
+        Categoria categoria = new Categoria();
+        categoria.setIdCategoria(rs.getInt("ID_CATEGORIA"));
+        categoria.setDescCategoria(rs.getString("DESC_CATEGORIA"));
+        return categoria;
     }
 }

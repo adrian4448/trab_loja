@@ -4,13 +4,14 @@ import BackEnd.DaoFactory.DaoFactory;
 import BackEnd.DaoInterface.FornecedorDao;
 import BackEnd.Entities.Fornecedor;
 import FrontEnd.Visualizar.Alterar.AlterarFornecedor;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 public class VisualizarFornecedores extends javax.swing.JFrame {
 
     public VisualizarFornecedores() {
         initComponents();
-        popularTabela();
+        popularTabela(fornecedorDao.getAllFornecedores());
     }
 
     FornecedorDao fornecedorDao = DaoFactory.createFornecedorDao();
@@ -70,6 +71,11 @@ public class VisualizarFornecedores extends javax.swing.JFrame {
         lblNomeFornecedor.setText("Nome Fornecedor");
 
         jButton1.setText("Pesquisar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pesquisar(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -123,7 +129,7 @@ public class VisualizarFornecedores extends javax.swing.JFrame {
         categoria.setIdFornecedor(idFornecedor);
 
         fornecedorDao.excluirFornecedor(categoria);
-        popularTabela();
+        popularTabela(fornecedorDao.getAllFornecedores());
     }//GEN-LAST:event_excluirFornecedor
 
     private void abrirPopUp(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abrirPopUp
@@ -142,6 +148,12 @@ public class VisualizarFornecedores extends javax.swing.JFrame {
         alterarFornecedorForm.popularCampos(fornecedor);
         alterarFornecedorForm.setVisible(true);
     }//GEN-LAST:event_alterarFornecedor
+
+    private void pesquisar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisar
+        String nomeFornecedor = txtNomeFornecedor.getText();
+        fornecedorDao.getFornecedorByFilter(nomeFornecedor);
+        popularTabela(fornecedorDao.getFornecedorByFilter(nomeFornecedor));
+    }//GEN-LAST:event_pesquisar
 
     public static void main(String args[]) {
         try {
@@ -167,10 +179,10 @@ public class VisualizarFornecedores extends javax.swing.JFrame {
         });
     }
     
-    public void popularTabela() {
+    public void popularTabela(List<Fornecedor> fornecedores) {
        DefaultTableModel table = (DefaultTableModel) tblFornecedores.getModel();
        table.setNumRows(0);
-       for(Fornecedor fornecedor : fornecedorDao.getAllFornecedores()) {
+       for(Fornecedor fornecedor : fornecedores) {
            table.addRow(new Object[] {
                fornecedor.getIdFornecedor(),
                fornecedor.getNomeFornecedor(),

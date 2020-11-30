@@ -131,7 +131,7 @@ public class AlterarFornecedor extends javax.swing.JFrame {
         fornecedor.setTelefoneFornecedor(txtTelefoneFornecedor.getText());
         
         fornecedorDao.atualizarFornecedor(fornecedor);
-        visualizarFornecedoresForm.popularTabela();
+        visualizarFornecedoresForm.popularTabela(fornecedorDao.getAllFornecedores());
     }//GEN-LAST:event_realizarAlteracao
     
     public void popularCampos(Fornecedor fornecedor) {

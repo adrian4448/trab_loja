@@ -5,7 +5,6 @@ import BackEnd.DaoInterface.CategoriaDao;
 import BackEnd.DaoInterface.FornecedorDao;
 import BackEnd.DaoInterface.ProdutoVendaDao;
 import BackEnd.Entities.ProdutoVenda;
-import BackEnd.Entities.StatusProduto;
 import FrontEnd.Utils.MethodUtils;
 import FrontEnd.Visualizar.Alterar.AlterarProduto;
 import javax.swing.JOptionPane;

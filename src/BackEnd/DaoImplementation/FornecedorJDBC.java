@@ -106,6 +106,23 @@ public class FornecedorJDBC implements FornecedorDao {
         return fornecedor;
     }
     
+    @Override
+    public List<Fornecedor> getFornecedorByFilter(String nomeFornecedor) {
+        List<Fornecedor> fornecedores = new ArrayList<>();
+        StringBuilder sqlWhere = new StringBuilder();
+        sqlWhere.append(" NOME_FORNECEDOR LIKE '%").append(nomeFornecedor).append("%'");
+        ResultSet rs = null;
+        try {
+            rs = selectUtils.selectWithWhere(sqlWhere, "tbl_fornecedor");
+            while(rs.next()) {
+                fornecedores.add(constructFornecedor(rs));
+            }    
+        }catch(Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        return fornecedores;
+    }
+    
         public static Fornecedor constructFornecedor(ResultSet rs) throws SQLException {
         Fornecedor fornecedor = new Fornecedor();
         fornecedor.setIdFornecedor(rs.getInt("ID_FORNECEDOR"));
