@@ -163,7 +163,7 @@ public class AlterarProduto extends javax.swing.JFrame {
         produtoDao.alterarProduto(produto);
         this.dispose();
         JOptionPane.showMessageDialog(null, "Produto alterado com sucesso !");
-        visualizarProdutosForm.popularTabela();
+        visualizarProdutosForm.popularTabela(produtoDao.getAllProducts());
     }//GEN-LAST:event_alterarProduto
 
     private void cancelarProcesso(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarProcesso

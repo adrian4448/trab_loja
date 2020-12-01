@@ -1,7 +1,6 @@
 package BackEnd.DaoInterface;
 
 import BackEnd.Entities.Categoria;
-import java.util.HashMap;
 import java.util.List;
 
 public interface CategoriaDao {

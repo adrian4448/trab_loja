@@ -107,6 +107,31 @@ public class ProdutoVendaJDBC implements ProdutoVendaDao {
         }
     }
     
+    @Override
+    public List<ProdutoVenda> produtosWithFilter(HashMap<String, Object> params) {
+        ResultSet rs = null;
+        StringBuilder sqlWhere = new StringBuilder();
+        List<ProdutoVenda> produtos = new ArrayList<>();
+        params.forEach((key,value) -> {
+            if(key.equals("DESC_PRODUTO")) {
+               sqlWhere.append(key).append(" LIKE '%").append(value).append("%'");
+            }else {
+               sqlWhere.append(key).append(" = '").append(value).append("'");
+            }
+            sqlWhere.append(" AND ");
+        });
+        sqlWhere.delete(sqlWhere.length() - 4, sqlWhere.length());
+        try {
+            rs = selectUtils.selectWithWhere(sqlWhere, "tbl_produtoVenda");
+            while(rs.next()) {
+                produtos.add(construirProduto(rs));
+            }
+        }catch(Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        return produtos;
+    }
+    
     private ProdutoVenda construirProduto(ResultSet rs) throws SQLException{
         ProdutoVenda produto = new ProdutoVenda();
         produto.setIdProduto(rs.getInt("ID_PRODUTO"));

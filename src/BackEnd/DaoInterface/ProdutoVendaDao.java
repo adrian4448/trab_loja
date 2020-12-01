@@ -1,6 +1,7 @@
 package BackEnd.DaoInterface;
 
 import BackEnd.Entities.ProdutoVenda;
+import java.util.HashMap;
 import java.util.List;
 
 public interface ProdutoVendaDao {
@@ -11,5 +12,5 @@ public interface ProdutoVendaDao {
     void inativarProduto(ProdutoVenda produto);
     void venderProduto(ProdutoVenda produto);
     List<ProdutoVenda> getAllProducts();
-    
+    List<ProdutoVenda> produtosWithFilter(HashMap<String, Object> params);
 }

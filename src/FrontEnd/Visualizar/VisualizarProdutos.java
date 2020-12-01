@@ -7,6 +7,8 @@ import BackEnd.DaoInterface.ProdutoVendaDao;
 import BackEnd.Entities.ProdutoVenda;
 import FrontEnd.Utils.MethodUtils;
 import FrontEnd.Visualizar.Alterar.AlterarProduto;
+import java.util.HashMap;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,7 +16,7 @@ public class VisualizarProdutos extends javax.swing.JFrame {
 
     public VisualizarProdutos() {
         initComponents();
-        popularTabela();
+        popularTabela(produtoDao.getAllProducts());
         methodUtils.popularComboBox(cbxCategoriaProduto, cbxFornecedor);
     }
         
@@ -112,7 +114,17 @@ public class VisualizarProdutos extends javax.swing.JFrame {
         lblFornecedor.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblFornecedor.setText("Fornecedor:");
 
+        cbxCategoriaProduto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todas as categorias" }));
+
+        cbxFornecedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos os fornecedores" }));
+        cbxFornecedor.setToolTipText("");
+
         btnPesquisar.setText("Pesquisar");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pesquisar(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
@@ -120,15 +132,8 @@ public class VisualizarProdutos extends javax.swing.JFrame {
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelLayout.createSequentialGroup()
-                        .addComponent(lblNomeProduto)
-                        .addGap(180, 180, 180)
-                        .addComponent(lblFornecedor)
-                        .addGap(339, 339, 339)
-                        .addComponent(btnPesquisar)
-                        .addGap(0, 81, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelLayout.createSequentialGroup()
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelLayout.createSequentialGroup()
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(scrollPane, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelLayout.createSequentialGroup()
@@ -139,8 +144,16 @@ public class VisualizarProdutos extends javax.swing.JFrame {
                                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblCategoriaProduto)
                                     .addComponent(cbxCategoriaProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
+                                .addGap(0, 245, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelLayout.createSequentialGroup()
+                                .addComponent(lblNomeProduto)
+                                .addGap(180, 180, 180)
+                                .addComponent(lblFornecedor))
+                            .addComponent(btnPesquisar))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,10 +167,11 @@ public class VisualizarProdutos extends javax.swing.JFrame {
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbxFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbxCategoriaProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPesquisar))
-                .addGap(76, 76, 76)
-                .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
+                    .addComponent(cbxCategoriaProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnPesquisar)
+                .addGap(47, 47, 47)
+                .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -187,7 +201,7 @@ public class VisualizarProdutos extends javax.swing.JFrame {
        produto.setIdProduto(Integer.parseInt(tblProduto.getValueAt(tblProduto.getSelectedRow(), 0).toString()));
        produtoDao.venderProduto(produto);
        JOptionPane.showMessageDialog(null, "Produto marcado como Vendido");
-       popularTabela();
+       popularTabela(produtoDao.getAllProducts());
     }//GEN-LAST:event_venderProduto
 
     private void devolverProduto(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolverProduto
@@ -195,7 +209,7 @@ public class VisualizarProdutos extends javax.swing.JFrame {
        produto.setIdProduto(Integer.parseInt(tblProduto.getValueAt(tblProduto.getSelectedRow(), 0).toString()));
        produtoDao.devolverProduto(produto);
        JOptionPane.showMessageDialog(null, "Produto marcado como Devolvido");
-       popularTabela();
+       popularTabela(produtoDao.getAllProducts());
     }//GEN-LAST:event_devolverProduto
 
     private void alterarProduto(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarProduto
@@ -214,8 +228,19 @@ public class VisualizarProdutos extends javax.swing.JFrame {
        produto.setIdProduto(Integer.parseInt(tblProduto.getValueAt(tblProduto.getSelectedRow(), 0).toString()));
        produtoDao.inativarProduto(produto);
        JOptionPane.showMessageDialog(null, "Produto marcado como Inativo");
-       popularTabela();
+       popularTabela(produtoDao.getAllProducts());
     }//GEN-LAST:event_inativarProduto
+
+    private void pesquisar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisar
+        HashMap<String, Object> params = new HashMap<>();
+        if(!cbxCategoriaProduto.getSelectedItem().toString().equals("Todas as categorias")) {
+            params.put("ID_CATEGORIA", categoriaDao.findCategoriaByName(cbxCategoriaProduto.getSelectedItem().toString()).getIdCategoria());
+        }else if(!cbxFornecedor.getSelectedItem().toString().equals("Todos os fornecedores")) {
+            params.put("ID_FORNECEDOR", fornecedorDao.findFornecedorByNome(cbxFornecedor.getSelectedItem().toString()).getIdFornecedor());
+        }
+        params.put("DESC_PRODUTO", txtNomeProduto.getText());
+        popularTabela(produtoDao.produtosWithFilter(params));
+    }//GEN-LAST:event_pesquisar
 
 
     public static void main(String args[]) {
@@ -242,11 +267,11 @@ public class VisualizarProdutos extends javax.swing.JFrame {
         });
     }
     
-    public void popularTabela() {
+    public void popularTabela(List<ProdutoVenda> produtos) {
         DefaultTableModel table = (DefaultTableModel) tblProduto.getModel();
         table.setRowCount(0);
         
-        for(ProdutoVenda produto : produtoDao.getAllProducts()) {
+        for(ProdutoVenda produto : produtos) {
             table.addRow(new Object[] {
                 produto.getIdProduto(),
                 produto.getDescProduto(),
