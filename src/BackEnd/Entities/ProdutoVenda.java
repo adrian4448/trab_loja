@@ -8,6 +8,7 @@ public class ProdutoVenda {
     private StatusProduto statusProduto;    
     private Fornecedor fornecedor;
     private Categoria categoria;
+    private Funcionario funcionarioAlter;
     
     public Integer getIdProduto() {
         return idProduto;
@@ -55,5 +56,13 @@ public class ProdutoVenda {
 
     public void setStatusProduto(StatusProduto statusProduto) {
         this.statusProduto = statusProduto;
+    }
+
+    public Funcionario getFuncionarioAlter() {
+        return funcionarioAlter;
+    }
+
+    public void setFuncionarioAlter(Funcionario funcionarioAlter) {
+        this.funcionarioAlter = funcionarioAlter;
     }
 }

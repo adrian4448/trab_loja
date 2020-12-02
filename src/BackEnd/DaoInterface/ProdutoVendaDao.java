@@ -11,6 +11,7 @@ public interface ProdutoVendaDao {
     void devolverProduto(ProdutoVenda produto);
     void inativarProduto(ProdutoVenda produto);
     void venderProduto(ProdutoVenda produto);
+    ProdutoVenda findProdutoById(Integer id);
     List<ProdutoVenda> getAllProducts();
     List<ProdutoVenda> produtosWithFilter(HashMap<String, Object> params);
 }

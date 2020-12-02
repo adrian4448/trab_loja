@@ -3,6 +3,7 @@ package FrontEnd.Visualizar;
 import BackEnd.DaoFactory.DaoFactory;
 import BackEnd.DaoInterface.CategoriaDao;
 import BackEnd.DaoInterface.FornecedorDao;
+import BackEnd.DaoInterface.FuncionarioDao;
 import BackEnd.DaoInterface.ProdutoVendaDao;
 import BackEnd.Entities.ProdutoVenda;
 import FrontEnd.Utils.MethodUtils;
@@ -23,6 +24,7 @@ public class VisualizarProdutos extends javax.swing.JFrame {
     CategoriaDao categoriaDao = DaoFactory.createCategoriaDao();
     ProdutoVendaDao produtoDao = DaoFactory.createProdutoVendaDao();
     FornecedorDao fornecedorDao = DaoFactory.createFornecedorDao();
+    FuncionarioDao funcionarioDao = DaoFactory.createFuncionarioDao();
     MethodUtils methodUtils = new MethodUtils();
         
     @SuppressWarnings("unchecked")
@@ -34,6 +36,7 @@ public class VisualizarProdutos extends javax.swing.JFrame {
         devolverProdutoOP = new javax.swing.JMenuItem();
         venderProdutoOP = new javax.swing.JMenuItem();
         inativarProduto = new javax.swing.JMenuItem();
+        ultimaAlteracaoOP = new javax.swing.JMenuItem();
         panel = new javax.swing.JPanel();
         scrollPane = new javax.swing.JScrollPane();
         tblProduto = new javax.swing.JTable();
@@ -44,6 +47,8 @@ public class VisualizarProdutos extends javax.swing.JFrame {
         cbxCategoriaProduto = new javax.swing.JComboBox<>();
         cbxFornecedor = new javax.swing.JComboBox<>();
         btnPesquisar = new javax.swing.JButton();
+        lblStatus = new javax.swing.JLabel();
+        cbxStatus = new javax.swing.JComboBox<>();
 
         alterarProdutoOP.setText("Alterar Produto");
         alterarProdutoOP.addActionListener(new java.awt.event.ActionListener() {
@@ -76,6 +81,14 @@ public class VisualizarProdutos extends javax.swing.JFrame {
             }
         });
         popUpMenu.add(inativarProduto);
+
+        ultimaAlteracaoOP.setText("Ultima Alteração");
+        ultimaAlteracaoOP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verUsuario(evt);
+            }
+        });
+        popUpMenu.add(ultimaAlteracaoOP);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -126,6 +139,11 @@ public class VisualizarProdutos extends javax.swing.JFrame {
             }
         });
 
+        lblStatus.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblStatus.setText("Status do Produto");
+
+        cbxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ATIVO", "VENDIDO", "DEVOLVIDO", "INATIVO" }));
+
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
@@ -142,9 +160,13 @@ public class VisualizarProdutos extends javax.swing.JFrame {
                                 .addComponent(cbxFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblCategoriaProduto)
-                                    .addComponent(cbxCategoriaProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 245, Short.MAX_VALUE)))
+                                    .addComponent(cbxCategoriaProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblCategoriaProduto))
+                                .addGap(18, 18, 18)
+                                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblStatus)
+                                    .addComponent(cbxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 56, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(panelLayout.createSequentialGroup()
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,12 +184,14 @@ public class VisualizarProdutos extends javax.swing.JFrame {
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNomeProduto)
                     .addComponent(lblFornecedor)
-                    .addComponent(lblCategoriaProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblCategoriaProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblStatus))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbxFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbxCategoriaProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbxCategoriaProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnPesquisar)
                 .addGap(47, 47, 47)
@@ -199,6 +223,7 @@ public class VisualizarProdutos extends javax.swing.JFrame {
     private void venderProduto(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_venderProduto
        ProdutoVenda produto = new ProdutoVenda();
        produto.setIdProduto(Integer.parseInt(tblProduto.getValueAt(tblProduto.getSelectedRow(), 0).toString()));
+       produto.setFuncionarioAlter(funcionarioDao.findFuncionarioByLogin(this.getTitle().substring(15, this.getTitle().length())));
        produtoDao.venderProduto(produto);
        JOptionPane.showMessageDialog(null, "Produto marcado como Vendido");
        popularTabela(produtoDao.getAllProducts());
@@ -207,6 +232,7 @@ public class VisualizarProdutos extends javax.swing.JFrame {
     private void devolverProduto(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolverProduto
        ProdutoVenda produto = new ProdutoVenda();
        produto.setIdProduto(Integer.parseInt(tblProduto.getValueAt(tblProduto.getSelectedRow(), 0).toString()));
+       produto.setFuncionarioAlter(funcionarioDao.findFuncionarioByLogin(this.getTitle().substring(15, this.getTitle().length())));
        produtoDao.devolverProduto(produto);
        JOptionPane.showMessageDialog(null, "Produto marcado como Devolvido");
        popularTabela(produtoDao.getAllProducts());
@@ -226,6 +252,7 @@ public class VisualizarProdutos extends javax.swing.JFrame {
     private void inativarProduto(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inativarProduto
        ProdutoVenda produto = new ProdutoVenda();
        produto.setIdProduto(Integer.parseInt(tblProduto.getValueAt(tblProduto.getSelectedRow(), 0).toString()));
+       produto.setFuncionarioAlter(funcionarioDao.findFuncionarioByLogin(this.getTitle().substring(15, this.getTitle().length())));
        produtoDao.inativarProduto(produto);
        JOptionPane.showMessageDialog(null, "Produto marcado como Inativo");
        popularTabela(produtoDao.getAllProducts());
@@ -238,9 +265,19 @@ public class VisualizarProdutos extends javax.swing.JFrame {
         }else if(!cbxFornecedor.getSelectedItem().toString().equals("Todos os fornecedores")) {
             params.put("ID_FORNECEDOR", fornecedorDao.findFornecedorByNome(cbxFornecedor.getSelectedItem().toString()).getIdFornecedor());
         }
+        params.put("STATUS_PRODUTO", cbxStatus.getSelectedIndex() + 1);
         params.put("DESC_PRODUTO", txtNomeProduto.getText());
         popularTabela(produtoDao.produtosWithFilter(params));
     }//GEN-LAST:event_pesquisar
+
+    private void verUsuario(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verUsuario
+        ProdutoVenda produto = produtoDao.findProdutoById(Integer.parseInt(tblProduto.getValueAt(tblProduto.getSelectedRow(), 0).toString()));
+        try {
+            JOptionPane.showMessageDialog(null, "Ultimo usuario que modificou o Status do produto: " + produto.getFuncionarioAlter().getLoginFuncionario());
+        }catch(Exception e) {
+            JOptionPane.showMessageDialog(null, "Nenhum funcionario alterou");
+        }
+    }//GEN-LAST:event_verUsuario
 
 
     public static void main(String args[]) {
@@ -287,16 +324,19 @@ public class VisualizarProdutos extends javax.swing.JFrame {
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JComboBox<String> cbxCategoriaProduto;
     private javax.swing.JComboBox<String> cbxFornecedor;
+    private javax.swing.JComboBox<String> cbxStatus;
     private javax.swing.JMenuItem devolverProdutoOP;
     private javax.swing.JMenuItem inativarProduto;
     private javax.swing.JLabel lblCategoriaProduto;
     private javax.swing.JLabel lblFornecedor;
     private javax.swing.JLabel lblNomeProduto;
+    private javax.swing.JLabel lblStatus;
     private javax.swing.JPanel panel;
     private javax.swing.JPopupMenu popUpMenu;
     private javax.swing.JScrollPane scrollPane;
     private javax.swing.JTable tblProduto;
     private javax.swing.JTextField txtNomeProduto;
+    private javax.swing.JMenuItem ultimaAlteracaoOP;
     private javax.swing.JMenuItem venderProdutoOP;
     // End of variables declaration//GEN-END:variables
 }

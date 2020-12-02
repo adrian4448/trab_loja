@@ -29,6 +29,8 @@ public class Menu extends javax.swing.JFrame {
         visualizarCategoriasOP = new javax.swing.JMenuItem();
         visualizarFornecedorOP = new javax.swing.JMenuItem();
         visualizarProdutoOP = new javax.swing.JMenuItem();
+        menuSair = new javax.swing.JMenu();
+        sairSistemaOP = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -109,6 +111,18 @@ public class Menu extends javax.swing.JFrame {
 
         menuBarPrincipal.add(menuVisualizar);
 
+        menuSair.setText("Sair");
+
+        sairSistemaOP.setText("Sair do Sistema");
+        sairSistemaOP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sair(evt);
+            }
+        });
+        menuSair.add(sairSistemaOP);
+
+        menuBarPrincipal.add(menuSair);
+
         setJMenuBar(menuBarPrincipal);
 
         pack();
@@ -147,8 +161,15 @@ public class Menu extends javax.swing.JFrame {
 
     private void visualizarProdutos(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visualizarProdutos
         VisualizarProdutos visualizarProdutosForm = new VisualizarProdutos();
+        visualizarProdutosForm.setTitle(this.getTitle());
         visualizarProdutosForm.setVisible(true);
     }//GEN-LAST:event_visualizarProdutos
+
+    private void sair(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sair
+        Login loginForm = new Login();
+        this.dispose();
+        loginForm.setVisible(true);
+    }//GEN-LAST:event_sair
 
     public static void main(String args[]) {
         try {
@@ -183,7 +204,9 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel imageIcon;
     private javax.swing.JMenuBar menuBarPrincipal;
     private javax.swing.JMenu menuCadastro;
+    private javax.swing.JMenu menuSair;
     private javax.swing.JMenu menuVisualizar;
+    private javax.swing.JMenuItem sairSistemaOP;
     private javax.swing.JMenuItem visualizarCategoriasOP;
     private javax.swing.JMenuItem visualizarFornecedorOP;
     private javax.swing.JMenuItem visualizarProdutoOP;

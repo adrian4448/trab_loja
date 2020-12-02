@@ -5,6 +5,7 @@ import BackEnd.DaoInterface.FornecedorDao;
 import BackEnd.Entities.Fornecedor;
 import FrontEnd.Visualizar.Alterar.AlterarFornecedor;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class VisualizarFornecedores extends javax.swing.JFrame {
@@ -130,6 +131,7 @@ public class VisualizarFornecedores extends javax.swing.JFrame {
 
         fornecedorDao.excluirFornecedor(categoria);
         popularTabela(fornecedorDao.getAllFornecedores());
+        JOptionPane.showMessageDialog(null, "Fornecedor excluido com Sucesso !");
     }//GEN-LAST:event_excluirFornecedor
 
     private void abrirPopUp(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abrirPopUp
@@ -146,6 +148,7 @@ public class VisualizarFornecedores extends javax.swing.JFrame {
         
         AlterarFornecedor alterarFornecedorForm = new AlterarFornecedor();
         alterarFornecedorForm.popularCampos(fornecedor);
+        alterarFornecedorForm.setVisualizarFornecedores(this);
         alterarFornecedorForm.setVisible(true);
     }//GEN-LAST:event_alterarFornecedor
 

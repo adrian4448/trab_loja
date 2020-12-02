@@ -7,7 +7,6 @@ import Utils.Select.SelectImplements;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.ZoneId;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
 
@@ -55,8 +54,10 @@ public class FuncionarioJDBC implements FuncionarioDao {
     }
 
     @Override
-    public Funcionario findFuncionario(HashMap<String, Object> param) {
+    public Funcionario findFuncionarioByLogin(String login) {
         ResultSet rs = null;
+        HashMap<String, Object> param = new HashMap<>();
+        param.put("LOGIN_FUNCIONARIO", login);
         try {
             rs = selectUtils.findByFieldName(param, "tbl_funcionario");
             while(rs.next()) {
@@ -85,10 +86,26 @@ public class FuncionarioJDBC implements FuncionarioDao {
         return false;
     }
     
+    @Override
+    public Funcionario findFuncionarioById(Integer id) {
+        ResultSet rs = null;
+        HashMap<String, Object> param = new HashMap<>();
+        param.put("ID_FUNCIONARIO", id);
+        try {
+            rs = selectUtils.findByFieldName(param, "tbl_funcionario");
+            while(rs.next()) {
+                return constructFuncionario(rs);
+            }
+        }catch(Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        return null;
+    }
+    
     public Funcionario constructFuncionario(ResultSet rs) throws SQLException{
         Funcionario funcionario = new Funcionario();
+        funcionario.setIdFuncionario(rs.getInt("ID_FUNCIONARIO"));
         funcionario.setNomeFuncionario(rs.getString("NOME_FUNCIONARIO"));
-        funcionario.setDataNascimento(rs.getDate("DATA_NASCIMENTO").toInstant().atZone(ZoneId.systemDefault() ).toLocalDate());
         funcionario.setCpfFuncionario(rs.getString("CPF_FUNCIONARIO"));
         funcionario.setLoginFuncionario(rs.getString("LOGIN_FUNCIONARIO"));
         funcionario.setSenhaFuncionario(rs.getString("SENHA_FUNCIONARIO"));

@@ -2,7 +2,6 @@ package FrontEnd.Principal;
 
 import BackEnd.DaoFactory.DaoFactory;
 import BackEnd.DaoInterface.FuncionarioDao;
-import FrontEnd.Principal.Menu;
 import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
@@ -110,6 +109,8 @@ public class Login extends javax.swing.JFrame {
         if(funcionarioDao.funcionarioLogin(txtLogin.getText(), txtSenha.getText())) {
             JOptionPane.showMessageDialog(null, "Login efetuado com sucesso");
             Menu menu = new Menu();
+            menu.setTitle("Seja bem-vindo " + txtLogin.getText());
+            this.dispose();
             menu.setVisible(true);
         }else {
             JOptionPane.showMessageDialog(null, "Usuario ou senha incorretos, favor verificar os dados digitados");

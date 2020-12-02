@@ -4,6 +4,7 @@ import BackEnd.DaoFactory.DaoFactory;
 import BackEnd.DaoInterface.FornecedorDao;
 import BackEnd.Entities.Fornecedor;
 import FrontEnd.Visualizar.VisualizarFornecedores;
+import javax.swing.JOptionPane;
 
 public class AlterarFornecedor extends javax.swing.JFrame {
 
@@ -14,7 +15,7 @@ public class AlterarFornecedor extends javax.swing.JFrame {
     FornecedorDao fornecedorDao = DaoFactory.createFornecedorDao();
     
     //Atualizar tabela
-    VisualizarFornecedores visualizarFornecedoresForm = new VisualizarFornecedores();
+    VisualizarFornecedores visualizarFornecedoresForm;
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -25,10 +26,10 @@ public class AlterarFornecedor extends javax.swing.JFrame {
         lblTelefoneFornecedor = new javax.swing.JLabel();
         lblIdFornecedor = new javax.swing.JLabel();
         txtIdFornecedor = new javax.swing.JTextField();
-        txtTelefoneFornecedor = new javax.swing.JTextField();
         txtNomeFornecedor = new javax.swing.JTextField();
         btnCancelar = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
+        txtTelefoneFornecedor = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -61,6 +62,12 @@ public class AlterarFornecedor extends javax.swing.JFrame {
             }
         });
 
+        try {
+            txtTelefoneFornecedor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -73,13 +80,13 @@ public class AlterarFornecedor extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnAlterar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblNomeFornecedor)
-                            .addComponent(lblTelefoneFornecedor)
-                            .addComponent(lblIdFornecedor)
-                            .addComponent(txtIdFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTelefoneFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNomeFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtTelefoneFornecedor, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblNomeFornecedor, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTelefoneFornecedor, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblIdFornecedor, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtIdFornecedor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                            .addComponent(txtNomeFornecedor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -131,6 +138,8 @@ public class AlterarFornecedor extends javax.swing.JFrame {
         fornecedor.setTelefoneFornecedor(txtTelefoneFornecedor.getText());
         
         fornecedorDao.atualizarFornecedor(fornecedor);
+        this.dispose();
+        JOptionPane.showMessageDialog(null, "Fornecedor alterado com Sucesso !");
         visualizarFornecedoresForm.popularTabela(fornecedorDao.getAllFornecedores());
     }//GEN-LAST:event_realizarAlteracao
     
@@ -163,6 +172,10 @@ public class AlterarFornecedor extends javax.swing.JFrame {
         });
     }
     
+    public void setVisualizarFornecedores(VisualizarFornecedores form) {
+        this.visualizarFornecedoresForm = form;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnCancelar;
@@ -172,6 +185,6 @@ public class AlterarFornecedor extends javax.swing.JFrame {
     private javax.swing.JLabel lblTelefoneFornecedor;
     private javax.swing.JTextField txtIdFornecedor;
     private javax.swing.JTextField txtNomeFornecedor;
-    private javax.swing.JTextField txtTelefoneFornecedor;
+    private javax.swing.JFormattedTextField txtTelefoneFornecedor;
     // End of variables declaration//GEN-END:variables
 }

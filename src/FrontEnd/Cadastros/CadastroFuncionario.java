@@ -3,6 +3,7 @@ package FrontEnd.Cadastros;
 import BackEnd.DaoFactory.DaoFactory;
 import BackEnd.DaoInterface.FuncionarioDao;
 import BackEnd.Entities.Funcionario;
+import FrontEnd.Utils.MethodUtils;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
@@ -14,6 +15,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     }
     
     FuncionarioDao funcionarioDao = DaoFactory.createFuncionarioDao();
+    MethodUtils methodUtils = new MethodUtils();
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -185,15 +187,19 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     private void cadastrarFuncionario(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarFuncionario
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         Funcionario funcionario = new Funcionario();
+        if(methodUtils.validaCPF(txtCpf.getText())) {
+            funcionario.setCpfFuncionario(txtCpf.getText());
+            funcionario.setNomeFuncionario(txtNome.getText());
+            funcionario.setLoginFuncionario(txtLogin.getText());
+            funcionario.setSenhaFuncionario(txtSenha.getText());
+            funcionario.setDataNascimento(LocalDate.parse(txtDataNascimento.getText(), dtf));
         
-        funcionario.setCpfFuncionario(txtCpf.getText());
-        funcionario.setNomeFuncionario(txtNome.getText());
-        funcionario.setLoginFuncionario(txtLogin.getText());
-        funcionario.setSenhaFuncionario(txtSenha.getText());
-        funcionario.setDataNascimento(LocalDate.parse(txtDataNascimento.getText(), dtf));
-        
-        funcionarioDao.cadastrarFuncionario(funcionario);
-        JOptionPane.showMessageDialog(null, "Funcionario cadastado com sucesso !");
+            funcionarioDao.cadastrarFuncionario(funcionario);
+            JOptionPane.showMessageDialog(null, "Funcionario cadastado com sucesso !");
+            this.dispose();
+        }else {
+            JOptionPane.showMessageDialog(null, "CPF Invalido, favor digite novamente !");
+        }
     }//GEN-LAST:event_cadastrarFuncionario
 
     public static void main(String args[]) {
